@@ -19,9 +19,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .vux-input__name {
   width: 200px;
-  border: 1px solid #000;
+}
+.vux-input {
+  &__name {
+    background-color: #f00;
+  }
 }
 </style>
