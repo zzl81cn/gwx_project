@@ -1,0 +1,10 @@
+{
+  "output": "src/api",
+  "template": "axios",
+  "projects": [
+    {
+      "id": "5bc94237364160152beb30e7",
+      "name": "demo"
+    }
+  ]
+}
