@@ -7,14 +7,24 @@
         placeholder="tell me your name"
         required
         :is-type="checkNameValid"
-        @on-change="onValueChange"></x-input>
+        @on-change="onValueChange">
+        <div slot="label"
+          class="name__icon">
+          <icon type="success"></icon>
+        </div>
+      </x-input>
       <x-input v-model="like"
         class="vux-input__like"
         title="喜欢"
         placeholder="tell me your like"
         required
         :is-type="checkLikeValid"
-        @on-change="onValueChange"></x-input>
+        @on-change="onValueChange">
+        <div slot="label"
+          class="like__icon">
+          <icon type="waiting"></icon>
+        </div>
+      </x-input>
     </group>
     <x-button style=" width: 200px;
     height: 60px;
@@ -30,14 +40,14 @@
 </template>
 
 <script>
-import { XInput, XButton, Group, Toast } from 'vux'
+import { XInput, XButton, Group, Toast, Icon } from 'vux'
 export default {
   name: '',
-  components: { XInput, XButton, Group, Toast },
+  components: { XInput, XButton, Group, Toast, Icon },
   data() {
     return {
-      name: '',
-      like: '',
+      name: '三只萌新',
+      like: 'better',
       message: '还未填写信息',
       isInvalid: true,
       isShowToast: false
@@ -46,8 +56,11 @@ export default {
   methods: {
     onSubmitClick() {
       if (!this.isInvalid) {
-        // 执行异步操作
-        console.log('执行异步操作')
+        // 执行操作
+        console.log(this.$refs.group, 'group')
+        for (const child of this.$refs.group.$children) {
+          child.reset()
+        }
       } else {
         this.isShowToast = true
       }
@@ -103,6 +116,10 @@ export default {
     width: 200px;
     height: 30px;
     border: 3px outset #999;
+  }
+  .name__icon,
+  .like__icon {
+    width: 53px;
   }
 }
 </style>
