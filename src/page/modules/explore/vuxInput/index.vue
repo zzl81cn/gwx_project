@@ -13,7 +13,7 @@
           <icon type="success"></icon>
         </div>
       </x-input>
-      <x-input v-model="like"
+      <!-- <x-input v-model="like"
         class="vux-input__like"
         title="喜欢"
         placeholder="tell me your like"
@@ -24,7 +24,7 @@
           class="like__icon">
           <icon type="waiting"></icon>
         </div>
-      </x-input>
+      </x-input> -->
     </group>
     <x-button style=" width: 200px;
     height: 60px;
@@ -57,10 +57,16 @@ export default {
     onSubmitClick() {
       if (!this.isInvalid) {
         // 执行操作
-        console.log(this.$refs.group, 'group')
-        for (const child of this.$refs.group.$children) {
+        console.log(this.$refs.group, '点击提交开始触发reset函数')
+        this.$refs.group.$children.forEach(child => {
           child.reset()
-        }
+        })
+        // this.$nextTick(() => {
+        //   this.$refs.group.$children.forEach(child => {
+        //     child.reset()
+        //   })
+        // })
+        // this.name = ''
       } else {
         this.isShowToast = true
       }
