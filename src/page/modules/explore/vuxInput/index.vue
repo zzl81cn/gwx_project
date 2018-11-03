@@ -11,9 +11,10 @@
         <div slot="label"
           class="name__icon">
           <icon type="success"></icon>
+          名字
         </div>
       </x-input>
-      <!-- <x-input v-model="like"
+      <x-input v-model="like"
         class="vux-input__like"
         title="喜欢"
         placeholder="tell me your like"
@@ -23,8 +24,9 @@
         <div slot="label"
           class="like__icon">
           <icon type="waiting"></icon>
+          喜欢
         </div>
-      </x-input> -->
+      </x-input>
     </group>
     <x-button style=" width: 200px;
     height: 60px;
@@ -47,7 +49,7 @@ export default {
   data() {
     return {
       name: '三只萌新',
-      like: 'better',
+      like: '',
       message: '还未填写信息',
       isInvalid: true,
       isShowToast: false
@@ -61,12 +63,12 @@ export default {
         this.$refs.group.$children.forEach(child => {
           child.reset()
         })
-        // this.$nextTick(() => {
-        //   this.$refs.group.$children.forEach(child => {
-        //     child.reset()
-        //   })
-        // })
         // this.name = ''
+        this.$nextTick(() => {
+          this.$refs.group.$children.forEach(child => {
+            child.reset()
+          })
+        })
       } else {
         this.isShowToast = true
       }
@@ -79,21 +81,19 @@ export default {
       statusList = children.filter(item => {
         return item.currentValue
       })
-      // 当未填写内容时显示对应信息 并且后面代码不在执行
       if (statusList.length < 1) {
         this.message = '还未填写信息'
         return
       }
-      // 当有值时判断是否有一项未填，如果有未填的停止执行并且显示对应的错误提示
-      for (const child of children) {
-        const invalid = child.invalid
-        this.isInvalid = invalid
-        this.message = invalid && `请填写正确的${child.title}`
-        // 如果无效则停止执行
-        if (invalid) {
-          return
-        }
+      // 找到第一个没有值的那一项，如果都有则返回undefined
+      const firstInvalid = children.find(item => {
+        return !item.valid
+      })
+      if (firstInvalid !== undefined) {
+        this.message = `请填写正确的${firstInvalid.title}`
       }
+      // 显示的将是否有效赋值给valid增加代码可读性
+      this.valid = Boolean(firstInvalid)
     },
     checkNameValid(name) {
       return {
@@ -125,7 +125,7 @@ export default {
   }
   .name__icon,
   .like__icon {
-    width: 53px;
+    width: 93px;
   }
 }
 </style>
