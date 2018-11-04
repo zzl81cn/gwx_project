@@ -1,10 +1,10 @@
 ## 前言
 
-1.  近期项目中使用的 vux 中的 input，以及使用自定义校验规则和动态匹配错误提示，有时间记录下自己的使用经历和源码分析。希望大家多多指正，留言区发表自己宝贵的意见。
+1.  近期项目中使用的 vux 中的 input，以及使用自定义校验规则和动态匹配错误提示，有时间记录下自己的使用经历和源码分析。希望大家多多指正，留言区发表自己宝贵的建议。
 
 ## 详解
 
-1.  列举[官方文档](https://doc.vux.li/zh-CN/components/icon.html)中常用的几个属性的使用方法，稍后分析其实现原理，贴出代码如下
+1.  列举[官方文档](https://doc.vux.li/zh-CN/components/icon.html)中常用的几个属性的使用方法，代码如下
 
 ```
  <group ref="group">
@@ -25,7 +25,7 @@
 
 ```
 
-官方文档有详细的解释，在此可以简单的说明下，`required`属性表示此选项为必填，`is-type`可以绑定一个函数，作为校验，这个函数得返回一个对象。格式如下
+官方文档有详细的解释，`required`属性表示此选项为必填，`is-type`可以绑定一个函数，作为校验，这个函数得返回一个对象。格式如下
 
 ```
  checkValid(name) {
@@ -37,8 +37,35 @@
 ```
 
 valid 可以设置为你的校验规则，需要返回一个布尔值，msg 是错误的提示信息。  
-不过 vux 本身写好几种校验方式，如果使用*email,china-name,china-mobile*这几种方式直接绑定字符串即可。  
-还有 solt 插槽，支持对 title 使用，注意的是`slot="label"`而不是 slot="title"
+vux 本身写好几种校验方式，如果使用*email,china-name,china-mobile*这几种方式直接绑定字符串即可。  
+solt 插槽如 slot="label"用于自定义 title,源码如下
+
+```
+ <slot name="label">
+    <label class="weui-label"
+      :class="labelClass"
+      :style="{width: labelWidth || $parent.labelWidth || labelWidthComputed, textAlign: $parent.labelAlign, marginRight: $parent.labelMarginRight}"
+      v-if="title"
+      v-html="title"
+      :for="`vux-x-input-${uuid}`"></label>
+    <inline-desc v-if="inlineDesc">{{ inlineDesc }}</inline-desc>
+ </slot>
+```
+
+分析:class="labelClass"动态绑定样式以对象的形式返回一个{[className]:Boolean}的格式的对象
+
+```
+ labelClass() {
+      return {
+        'vux-cell-justify':
+          this.$parent.labelAlign === 'justify' ||
+          this.$parent.$parent.labelAlign === 'justify'
+      }
+    }
+```
+
+![label-align](https://user-gold-cdn.xitu.io/2018/11/3/166d731af4378b06?w=697&h=473&f=png&s=30963)
+同样的方式查看他父级是否有 labelAlign 属性，vux-cell-justify 类名对应的样式没有应用。
 
 ## 使用场景
 
@@ -58,7 +85,7 @@ valid 可以设置为你的校验规则，需要返回一个布尔值，msg 是�
 
 - 文档中写了 reset 可以重置输入框值，清除错误信息
   使用方式：
-- 在 x-input 外层的 group 标签上绑定 ref 来访问子组件。因此我们可以通过 this.\$refs.group.$children 获取到 input 并且可以使用组件中定义的 reset 方法
+- 在 x-input 外层的 group 标签上绑定 ref 来访问子组件。因此我们可以通过 this.\$refs.group.$children 获取到 input 组件集合并且可以使用组件中定义的 reset 方法
   查看源码
 - 如果你的项目中已经安装了 vux 可以通过安装[Search node_modules](https://marketplace.visualstudio.com/items?itemName=jasonnutter.search-node-modules)查找 node_modules 文件夹中 vux 安装包路径为`vux/src/components/x-input/index.vue`文件 reset 方法源码如下:
 
@@ -85,11 +112,11 @@ reset(value = '') {
       }
 ```
 
-本以为这样就可以清空数据了，没想到点击按钮时数据是清空了，但是还是有报错图标提醒。
+本以为这样就可以清空数据了，没想到点击按钮时数据是清空了，但是还是有报错图标显示。
 ![提交后的截图](https://user-gold-cdn.xitu.io/2018/11/2/166d3146014829de?w=339&h=207&f=png&s=4843)
 通过[vue-devtools](https://github.com/vuejs/vue-devtools)可以看到
 ![调试结果](https://user-gold-cdn.xitu.io/2018/11/2/166d3786181aa582?w=1201&h=525&f=png&s=53558)  
-valid 的值为 false 是不可用的查看 vux 源码查看涉及到 valid 的操作代码如下
+valid 的值为 false 查看 vux 源码查看涉及到 valid 代码如下
 
 ```
 validate() {
@@ -194,7 +221,7 @@ watch:{
 ```
 
 因为监听了 input 绑定 currentValue 的值，当 reset 方法执行的时候 this.currentValue = ' ' 触发了变动执行 validate 方法，导致再次给 this.valid 赋值 false。  
-该如何解决这个问题，问题发生的原因是 currentValue 发生变化导致触发 validate 方法校验，所以我们只要当执行 reset 方法后不触发 validate 校验即可  
+该如何解决这个问题，问题发生的原因是 currentValue 发生变化导致触发 validate 方法校验，所以我们只要当执行 reset 方法后不触发 currentValue 改变就可以不触发 validate 方法校验  
 方法一:
 
 ```
@@ -247,3 +274,42 @@ onSubmitClick() {
 ### 场景 2
 
 当我们点击提交时,如果有校验选项不符合规则能提示相匹配的警告
+
+```
+data(){
+    return {
+        message: '还未填写信息'
+    }
+}
+```
+
+将 message 提示信息初始值设置为还未填写信息，当我们未进行填写信息的时候点击提交显示。然后使用 on-change 函数绑定校验规则，实时更新 message 对应的提示语，业务逻辑如下：
+
+```
+     onValueChange() {
+      // 多次使用赋值给变量
+      const children = this.$refs.group.$children
+      let statusList = []
+      // 筛选出有值的，作为是否全部未填的判断依据 如果length小于1则还没填写任何内容
+      statusList = children.filter(item => {
+        return item.currentValue
+      })
+      if (statusList.length < 1) {
+        this.message = '还未填写信息'
+        return
+      }
+      // 找到第一个没有值的那一项，如果都有则返回undefined
+      const firstInvalid = children.find(item => {
+        return !item.valid
+      })
+      if (firstInvalid !== undefined) {
+        this.message = `请填写正确的${firstInvalid.title}`
+      }
+      // 显示的将是否有效赋值给valid增加代码可读性
+      this.valid = Boolean(firstInvalid)
+    }
+```
+
+### github
+
+[代码地址](https://github.com/guanwanxiao/gwx_project)
