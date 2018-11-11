@@ -5,7 +5,7 @@ import callHook from '@/page/modules/explore/callhook'
 import vuxInput from '@/page/modules/explore/vuxInput'
 import vModel from '@/page/modules/vueApi/vModel'
 import input from '@/page/modules/vueApi/vModel/input'
-
+import setMap from '@/page/modules/es6/setMap'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +34,11 @@ export default new Router({
       path: '/vueapi/vmodel/input',
       name: 'inputHtml',
       component: input
+    },
+    {
+      path: '/es6/setmap',
+      name: 'setMap',
+      component: setMap
     }
   ]
 })
