@@ -5,6 +5,8 @@
       @click="onButtonClick">按钮</div>
     <div class="map__button"
       @click="onExpButtonClick">正则匹配</div>
+    <div class="map__button"
+      @click="onDefalutButtonClick(0)">有设置默认值</div>
   </div>
 </template>
 
@@ -36,6 +38,14 @@ const USER_EXP = new Map([
     }
   ]
 ])
+// 设置匹配正则，正则条件如果有交集会匹配到多个子项
+// /false_[^58]$/表示匹配到最后以为非58结尾的，位数要相同否则会匹配不到
+const SET_DEFAULT_STATUS = new Map([
+  [/true_[1-3]$/, () => console.log('我是真的情况，1-3的情况')],
+  [/true_[^123]$/, () => console.log('我是真的情况，非1-3')],
+  [/false_[58]$/, () => console.log('为假的情况，5,8')],
+  [/false_[^58]$/, () => console.log('其他情况')]
+])
 export default {
   name: 'setMap',
   data() {
@@ -44,7 +54,8 @@ export default {
       color: 'blue',
       prompt: '成功获取数据',
       isBlue: false,
-      isYellow: false
+      isYellow: false,
+      isTeacher: false
     }
   },
 
@@ -74,6 +85,14 @@ export default {
     },
     successCallback() {
       console.log(this.prompt)
+    },
+    onDefalutButtonClick(type) {
+      const typeList = [...SET_DEFAULT_STATUS].filter(([reg]) => {
+        return reg.test(this.isTeacher + '_' + type)
+      })
+      typeList.forEach(([reg, fn]) => {
+        fn.call(this)
+      })
     }
   }
 }
