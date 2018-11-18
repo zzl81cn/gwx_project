@@ -1,5 +1,6 @@
 <template>
   <div class="vux-input">
+    <guan></guan>
     <group ref="group">
       <x-input v-model="name"
         class="vux-input__name"

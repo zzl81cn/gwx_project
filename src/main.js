@@ -4,7 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 Vue.config.productionTip = false
-
+Vue.component('guan', {
+  template: '<h1>官万晓</h1>'
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
