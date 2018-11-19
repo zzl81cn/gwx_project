@@ -8,6 +8,7 @@ import input from '@/page/modules/vueApi/vModel/input'
 import setMap from '@/page/modules/es6/setMap'
 import proxy from '@/page/modules/es6/proxy'
 import replace from '@/page/modules/regExp/replace'
+import reverseNumber from '@/page/modules/practice/string/reverseNumber'
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/practice/string/reversenumber',
+      name: 'reverseNumber',
+      component: reverseNumber
     },
     {
       path: '/regexp/replace',
