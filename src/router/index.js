@@ -10,6 +10,7 @@ import proxy from '@/page/modules/es6/proxy'
 import replace from '@/page/modules/regExp/replace'
 import reverseNumber from '@/page/modules/practice/string/reverseNumber'
 import zeroCount from '@/page/modules/practice/number/zeroCount'
+import twoPoint from '@/page/modules/practice/array/twoPoint'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +29,11 @@ export default new Router({
       path: '/practice/number/zerocount',
       name: 'zeroCount',
       component: zeroCount
+    },
+    {
+      path: '/practice/array/twopoint',
+      name: 'twoPoint',
+      component: twoPoint
     },
     {
       path: '/regexp/replace',
