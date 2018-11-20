@@ -1,0 +1,4 @@
+/**
+ * @param {}
+ */
+export function twoPoint() {}

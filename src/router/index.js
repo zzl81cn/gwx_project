@@ -9,6 +9,7 @@ import setMap from '@/page/modules/es6/setMap'
 import proxy from '@/page/modules/es6/proxy'
 import replace from '@/page/modules/regExp/replace'
 import reverseNumber from '@/page/modules/practice/string/reverseNumber'
+import zeroCount from '@/page/modules/practice/number/zeroCount'
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +23,11 @@ export default new Router({
       path: '/practice/string/reversenumber',
       name: 'reverseNumber',
       component: reverseNumber
+    },
+    {
+      path: '/practice/number/zerocount',
+      name: 'zeroCount',
+      component: zeroCount
     },
     {
       path: '/regexp/replace',
