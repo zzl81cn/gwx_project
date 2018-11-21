@@ -11,6 +11,7 @@ import replace from '@/page/modules/regExp/replace'
 import reverseNumber from '@/page/modules/practice/string/reverseNumber'
 import zeroCount from '@/page/modules/practice/number/zeroCount'
 import twoPoint from '@/page/modules/practice/array/twoPoint'
+import radio from '@/page/modules/practice/other/radio'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +35,11 @@ export default new Router({
       path: '/practice/array/twopoint',
       name: 'twoPoint',
       component: twoPoint
+    },
+    {
+      path: '/practice/other/radio',
+      name: 'radio',
+      component: radio
     },
     {
       path: '/regexp/replace',
