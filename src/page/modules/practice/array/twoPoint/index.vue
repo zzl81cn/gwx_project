@@ -5,6 +5,7 @@
     <div @click="onExpandArrayClick">展开数组</div>
     <div @click="onMinClick">最小两个数</div>
     <div @click="onAllInStringClick">判断字符串是否包含(全大写)</div>
+    <div @click="onFindTargetClick">找出插入目标序号</div>
   </div>
 </template>
 
@@ -23,6 +24,17 @@ export default {
   },
 
   methods: {
+    onFindTargetClick() {
+      const list = [1, 5, 5, 9]
+      const target = 10
+      const length = list.length
+      for (let i = 0; i < length; i++) {
+        if (list[i] >= target) {
+          return i
+        }
+      }
+      return length
+    },
     onFindIndexClick() {
       this.index = twoPoint(this.numberList, 2, 0, this.numberList.length - 1)
       console.log(this.index)
