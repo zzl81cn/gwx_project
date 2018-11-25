@@ -6,8 +6,8 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
+    env: '"development"',
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},

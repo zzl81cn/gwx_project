@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import callApi from './resource/api.js'
 Vue.config.productionTip = false
+Vue.prototype.$callApi = callApi
 Vue.component('guan', {
   template: '<h1>官万晓</h1>'
 })

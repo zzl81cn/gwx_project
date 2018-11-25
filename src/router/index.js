@@ -7,11 +7,13 @@ import vModel from '@/page/modules/vueApi/vModel'
 import input from '@/page/modules/vueApi/vModel/input'
 import setMap from '@/page/modules/es6/setMap'
 import proxy from '@/page/modules/es6/proxy'
+import promise from '@/page/modules/es6/promise'
 import replace from '@/page/modules/regExp/replace'
 import reverseNumber from '@/page/modules/practice/string/reverseNumber'
 import zeroCount from '@/page/modules/practice/number/zeroCount'
 import twoPoint from '@/page/modules/practice/array/twoPoint'
 import radio from '@/page/modules/practice/other/radio'
+import reaxios from '@/page/modules/axios'
 Vue.use(Router)
 
 export default new Router({
@@ -75,6 +77,16 @@ export default new Router({
       path: '/es6/proxy',
       name: 'proxy',
       component: proxy
+    },
+    {
+      path: '/es6/promise',
+      name: 'promise',
+      component: promise
+    },
+    {
+      path: '/reaxios',
+      name: 'reaxios',
+      component: reaxios
     }
   ]
 })
