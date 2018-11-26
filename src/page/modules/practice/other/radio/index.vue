@@ -1,5 +1,7 @@
 <template>
   <div>
+    <input type="file"
+      @change="onFileChange">
     <div class="example">
       <label v-for="(item,index) in radioList"
         :key="item.value"
@@ -65,6 +67,12 @@ export default {
   },
 
   methods: {
+    onFileChange(e) {
+      // const file = e.target.files[0]
+      // callUploadApi(file, data => {
+      //   this.filePath = data
+      // })
+    },
     onRedClick() {
       this.isShow = !this.isShow
     }

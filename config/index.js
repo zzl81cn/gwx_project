@@ -10,7 +10,7 @@ module.exports = {
     env: '"development"',
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: { '/api/pc': 'http://weixt.spacetech.com.cn:8090' },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

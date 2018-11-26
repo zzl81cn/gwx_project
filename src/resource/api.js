@@ -21,10 +21,11 @@ const callApi = ({
     })
   }
   const axiosInstance = axios.create(axiosOptions)
-  // Content-Type 包含 application/x-www-form-urlencoded;，
   const params = qs.stringify({
     apiparams: JSON.stringify({ params: param, readonly, async })
   })
+  console.log(axiosInstance.post(api, params))
+
   return axiosInstance
     .post(api, params)
     .then(({ data: { ret: { code, msg }, data } }) => {
@@ -38,10 +39,10 @@ const callApi = ({
       console.log(`
         ${'*'.repeat(24)}  api = ${api}  ${'*'.repeat(24)}
         params = ${JSON.stringify(param, null, 2)}
-        code = ${error.code} 
-        errorMessage = ${error.message}
-        ${'#'.repeat(70)}
-      `)
+          code = ${error.code} 
+          errorMessage = ${error.message}
+          ${'#'.repeat(70)}
+        `)
       return Promise.reject(error)
     })
 }
