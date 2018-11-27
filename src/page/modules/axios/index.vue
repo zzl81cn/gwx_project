@@ -38,10 +38,13 @@ export default {
     },
     reFindCount() {
       this.$callApi({
-        api: 'message_notice_findUnReadCount',
+        api: 'oa_resource_findResource',
         param: {
           campusid: 1615,
-          userid: 3462
+          pageIndex: 1,
+          pageSize: 20,
+          processtype: 1004,
+          likename: ''
         }
       })
     },
