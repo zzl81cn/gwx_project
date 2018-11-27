@@ -24,8 +24,6 @@ const callApi = ({
   const params = qs.stringify({
     apiparams: JSON.stringify({ params: param, readonly, async })
   })
-  console.log(axiosInstance.post(api, params))
-
   return axiosInstance
     .post(api, params)
     .then(({ data: { ret: { code, msg }, data } }) => {
