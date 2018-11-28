@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import upload from '@/components/upload'
 import callHook from '@/page/modules/explore/callhook'
 import vuxInput from '@/page/modules/explore/vuxInput'
 import vModel from '@/page/modules/vueApi/vModel'
@@ -20,8 +20,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'upload',
+      component: upload
     },
     {
       path: '/practice/string/reversenumber',
