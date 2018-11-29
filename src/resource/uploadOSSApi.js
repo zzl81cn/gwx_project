@@ -2,6 +2,7 @@ import callApi from './api.js'
 import moment from 'moment'
 // 本地文件信息hashkey，成功回调，进度条，失败回调
 export function callUploadApi(localfile, success, progress, fail = ret => {}) {
+  // api 是 用户获取 '签名和Policy' 等信息的应用服务器
   callApi({
     api: 'base_config_getOSSPolicyAndSignature',
     param: {}

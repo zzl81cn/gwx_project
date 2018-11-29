@@ -3,9 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import ElementUI from 'element-ui'
 import callApi from './resource/api.js'
 Vue.config.productionTip = false
 Vue.prototype.$callApi = callApi
+Vue.use(ElementUI, { size: 'medium' })
 Vue.component('guan', {
   template: '<h1>官万晓</h1>'
 })

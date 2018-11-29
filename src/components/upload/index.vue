@@ -1,10 +1,17 @@
 <template>
   <div class="upload">
     <div class="upload__button">
-      <div class="button__wrap">{{text}}</div>
-      <input class="button__input"
+      <div class="button__text">{{text}}</div>
+      <input class="button__file"
         type="file"
         @change="onFileChange">
+    </div>
+    <div class="upload__result">
+      <div class="result__item">
+        <!-- <img :src=""
+          alt=""> -->
+        <div class="item__name"></div>
+      </div>
     </div>
     <img v-if="isImage"
       :src="filePath">
@@ -27,7 +34,7 @@ export default {
     },
     text: {
       type: String,
-      default: '上传'
+      default: '点击上传'
     }
   },
   data() {
@@ -63,7 +70,19 @@ export default {
 .upload {
   &__button {
     .button {
-      &__wrap {
+      &__text {
+        color: #fff;
+        background-color: #409eff;
+        border-color: #409eff;
+        padding: 9px 15px;
+        font-size: 12px;
+        border-radius: 3px;
+        width: 48px;
+        line-height: 12px;
+        text-align: center;
+      }
+      &__file {
+        display: none;
       }
     }
   }
