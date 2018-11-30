@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import callApi from './resource/api.js'
+import 'element-ui/lib/theme-chalk/index.css'
 Vue.config.productionTip = false
 Vue.prototype.$callApi = callApi
 Vue.use(ElementUI, { size: 'medium' })

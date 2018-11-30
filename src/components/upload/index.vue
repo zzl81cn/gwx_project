@@ -1,16 +1,23 @@
 <template>
   <div class="upload">
-    <div class="upload__button">
+    <div class="upload__button"
+      @click="onUploadClick">
       <div class="button__text">{{text}}</div>
-      <input class="button__file"
+      <input ref="file"
+        class="button__file"
         type="file"
         @change="onFileChange">
     </div>
     <div class="upload__result">
-      <div class="result__item">
-        <!-- <img :src=""
-          alt=""> -->
-        <div class="item__name"></div>
+      <div v-for="item in fileList"
+        :key="item.id"
+        class="result__item">
+        <div class="item__icon">
+          <i class="el-icon-document"></i>
+        </div>
+        <div class="item__name">
+          {{item.name}}
+        </div>
       </div>
     </div>
     <img v-if="isImage"
@@ -40,20 +47,25 @@ export default {
   data() {
     return {
       percent: '0%',
-      filePath: ''
+      filePath: '',
+      fileList: [{ name: '15.png', id: 111 }]
     }
   },
 
   methods: {
     progress(percent) {
       this.percent = percent
+      this.$refs.file.value = null
+    },
+    onUploadClick() {
+      this.$refs.file.click()
     },
     onFileChange(event) {
       const file = event.target.files[0]
       if (file === undefined) {
         return
       }
-      this.fileName = file.name
+      this.fileList.push({ name: file.name, id: Math.random() * 1000 })
       callUploadApi(
         file,
         data => {
@@ -80,9 +92,33 @@ export default {
         width: 48px;
         line-height: 12px;
         text-align: center;
+        cursor: pointer;
       }
       &__file {
         display: none;
+      }
+    }
+  }
+  &__result {
+    display: flex;
+    flex-flow: column wrap;
+    .result {
+      &__item {
+        display: flex;
+        align-items: center;
+        .item {
+          &__name {
+            color: #606266;
+            overflow: hidden;
+            padding-left: 4px;
+            transition: color 0.3s;
+            white-space: nowrap;
+            font-size: 14px;
+            &:hover {
+              color: #409eff;
+            }
+          }
+        }
       }
     }
   }
