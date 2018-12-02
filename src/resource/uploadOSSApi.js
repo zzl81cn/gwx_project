@@ -76,8 +76,10 @@ function doUploadFileToOss(
   ajax.upload.onprogress = function(progressEvent) {
     if (progressEvent.type === 'progress') {
       // 计算进度
-      const percent =
-        Math.round((progressEvent.loaded / progressEvent.total) * 100, 2) + '%'
+      const percent = Math.round(
+        (progressEvent.loaded / progressEvent.total) * 100,
+        2
+      )
       // 执行传入的进度函数
       progress && progress(percent)
     }

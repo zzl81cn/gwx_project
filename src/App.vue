@@ -1,19 +1,13 @@
 <template>
   <div id="app">
-    <!-- <router-view/> -->
-    <upload :isImage="true"
-      :isShowPesent="true"></upload>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
 import { set } from './utils/cookie.js'
-import upload from './components/upload'
 export default {
-  components: {
-    upload
-  },
   methods: {
     login() {
       this.$callApi({

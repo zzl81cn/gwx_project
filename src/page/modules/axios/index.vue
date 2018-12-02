@@ -1,10 +1,11 @@
 <template>
   <div>
-    <div>axios</div>
+    <component :is="uploadButton"></component>
+    <!-- <div>axios</div>
     <input type="file"
       @change="onFileChange"> {{showpesent}}
     <img v-if="filePath"
-      :src="filePath">
+      :src="filePath"> -->
   </div>
 </template>
 
@@ -17,7 +18,8 @@ export default {
     return {
       isShowPesent: false,
       showpesent: '',
-      filePath: ''
+      filePath: '',
+      uploadButton: 'uploadButton'
     }
   },
 

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import upload from '@/components/upload'
 import callHook from '@/page/modules/explore/callhook'
 import vuxInput from '@/page/modules/explore/vuxInput'
 import vModel from '@/page/modules/vueApi/vModel'
@@ -21,7 +20,7 @@ export default new Router({
     {
       path: '/',
       name: 'upload',
-      component: upload
+      component: reaxios
     },
     {
       path: '/practice/string/reversenumber',
