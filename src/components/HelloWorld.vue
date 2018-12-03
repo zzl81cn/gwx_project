@@ -1,9 +1,20 @@
 <template>
   <div class="hello">
-    <h1>组件</h1>
+    <slot :todo="number">
+      {{number}}
+    </slot>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {},
+  data() {
+    return {
+      number: 15
+    }
+  }
+}
 </script>
+<style lang="scss" scoped>
+</style>

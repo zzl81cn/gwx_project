@@ -12,15 +12,17 @@ import reverseNumber from '@/page/modules/practice/string/reverseNumber'
 import zeroCount from '@/page/modules/practice/number/zeroCount'
 import twoPoint from '@/page/modules/practice/array/twoPoint'
 import radio from '@/page/modules/practice/other/radio'
+import mixins from '@/page/modules/practice/other/mixins'
 import reaxios from '@/page/modules/axios'
+import login from '@/page/login'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'upload',
-      component: reaxios
+      name: 'login',
+      component: login
     },
     {
       path: '/practice/string/reversenumber',
@@ -41,6 +43,11 @@ export default new Router({
       path: '/practice/other/radio',
       name: 'radio',
       component: radio
+    },
+    {
+      path: '/practice/other/mixins',
+      name: 'mixins',
+      component: mixins
     },
     {
       path: '/regexp/replace',
