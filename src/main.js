@@ -7,9 +7,13 @@ import ElementUI from 'element-ui'
 import callApi from './resource/api.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import componentList from './components/upload/component.js'
+// 引入vuex实例注入vue实例中
+import store from './store'
+import Vuex from 'vuex'
 Vue.config.productionTip = false
 Vue.prototype.$callApi = callApi
 Vue.use(ElementUI, { size: 'medium' })
+Vue.use(Vuex)
 Vue.component('guan', {
   template: '<h1>官万晓</h1>'
 })
@@ -21,5 +25,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })

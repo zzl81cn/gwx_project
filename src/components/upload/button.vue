@@ -81,19 +81,17 @@ export default {
       this.$refs.file.value = null
     },
     onFileCopyClick(index) {
-      this.copyFile = this.fileList[index].filePath
+      this.$refs.input.value = this.fileList[index].filePath
       this.$refs.input.focus()
-      setTimeout(() => {
-        const canCopy = document.execCommand('copy')
-        if (canCopy) {
-          this.$refs.input.select()
-          document.execCommand('copy')
-          this.$message({
-            message: '复制链接成功',
-            type: 'success'
-          })
-        }
-      }, 200)
+      const canCopy = document.execCommand('copy')
+      if (canCopy) {
+        this.$refs.input.select()
+        document.execCommand('copy')
+        this.$message({
+          message: '复制链接成功',
+          type: 'success'
+        })
+      }
     },
     onCloseFileClick(index) {
       this.fileList.splice(index, 1)

@@ -1,17 +1,28 @@
 <template>
   <div class="hello">
-    <slot :todo="number">
-      {{number}}
-    </slot>
+    <div class="hello__head"
+      @click="onClick">标题</div>
+    <slot></slot>
+    <slot name="test"></slot>
+    <!-- <div class="hello__body">主体</div> -->
+    <!-- <h4 slot="test">test-slot</h4> -->
   </div>
 </template>
 
 <script>
 export default {
-  props: {},
+  props: {
+    value: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
-    return {
-      number: 15
+    return {}
+  },
+  methods: {
+    onClick() {
+      this.$emit('testClick')
     }
   }
 }

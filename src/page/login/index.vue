@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{name}}
     <hello>
       <template slot-scope="{todo}">
         <span v-if="todo&&todo===15">
@@ -8,15 +9,32 @@
         <span v-else>{{todo}}</span>
       </template>
     </hello>
+    {{number}}
   </div>
 </template>
 
 <script>
 import hello from '../../components/HelloWorld'
+import { mapState } from 'vuex'
+// 原始方法
+import store from '../../store'
 export default {
   name: 'login',
   components: {
     hello
+  },
+  computed: {
+    count() {
+      return store.state.number
+    },
+    ...mapState({
+      number: state => {
+        return state.number
+      },
+      name: ({ axiosModule }) => {
+        return axiosModule.name
+      }
+    })
   },
   data() {
     return {
@@ -38,6 +56,9 @@ export default {
     onInputFocus(value) {
       console.log(value)
     }
+  },
+  created() {
+    console.log(store)
   }
 }
 </script>

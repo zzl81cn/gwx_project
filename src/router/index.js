@@ -15,6 +15,8 @@ import radio from '@/page/modules/practice/other/radio'
 import mixins from '@/page/modules/practice/other/mixins'
 import reaxios from '@/page/modules/axios'
 import login from '@/page/login'
+// import hoc from '@/components/hoc/index.js'
+
 Vue.use(Router)
 
 export default new Router({

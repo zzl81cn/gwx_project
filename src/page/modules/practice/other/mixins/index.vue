@@ -1,57 +1,55 @@
 <template>
-  <div>
-    <div @click="onButtonClick($event.target.innerHTML)">{{message}}</div>
-    <input type="text"
-      :value="name"
-      @change="onValueChange($event.target.value)">
-    <el-table :data="tableData">
-      <el-table-column v-for="item in propList"
-        :key="item.date"
-        v-bind="item"
-        width="180">
-      </el-table-column>
-    </el-table>
+  <div class="mixins">
+    <div class="mixins__head">
+      <!-- 欢迎{{name}} -->
+    </div>
+    <div class="mixins__body">
+      <hoc value="传入值"
+        @testClick="onTestClick">
+        4654
+        <p slot="test">15</p>
+      </hoc>
+    </div>
   </div>
 </template>
 
 <script>
 import buttonMixins from '../../../../../components/mixins'
-import extend from '../../../../../components/extends'
+import child from '../../../../../components/HelloWorld'
+import { mapState } from 'vuex'
+// import store from '../../../../../store'
+import hoc from '@/components/hoc'
 export default {
   name: 'buttonMixins',
-  extends: extend,
+  components: {
+    hoc: hoc(child)
+  },
   mixins: [buttonMixins],
+  computed: {
+    ...mapState({
+      number: state => {
+        return state.number
+      },
+      name: ({ axiosModule }) => {
+        return axiosModule.name
+      },
+      month: ({ axiosModule }) => {
+        return axiosModule.month
+      }
+    })
+  },
   data() {
     return {
-      message: '15',
-      tableData: [
-        {
-          date: '2016-05-02',
-          name: '王小虎'
-        },
-        {
-          date: '2016-05-04',
-          name: '王小虎'
-        }
-      ],
-      propList: [
-        { prop: 'date', label: '日期' },
-        {
-          prop: 'name',
-          label: '姓名',
-          renderCell: scope => {
-            return <el-button>{scope.row}</el-button>
-          }
-        }
-      ]
+      message: '15'
     }
   },
 
   methods: {
-    onButtonClick() {
-      console.log(this.$data, this.$methods, this)
+    onTestClick() {
+      console.log('slot')
     }
-  }
+  },
+  created() {}
 }
 </script>
 
