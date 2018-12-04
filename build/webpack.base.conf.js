@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
+const app = require('../config/app')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -23,15 +24,12 @@ const createLintingRule = () => ({
 const webpackConfig = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: app.entry
   },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath:
-      process.env.NODE_ENV === 'production'
-        ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath
+    publicPath: utils.assetsSubDirectory()
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
