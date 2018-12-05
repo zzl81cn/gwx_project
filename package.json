@@ -6,7 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js",
-    "dev:es6": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name es6",
+    "dev:es6": "webpack-dev-server  --inline --progress  --open --config build/webpack.dev.conf.js --config-name es6",
+    "dev:axios": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name axios",
+    "dev:explore": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name explore",
+    "dev:practice": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name practice",
+    "dev:regExp": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name regExp",
+    "dev:vueApi": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name vueApi",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",

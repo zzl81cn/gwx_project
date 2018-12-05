@@ -1,6 +1,7 @@
 <template>
   <div>
-    <component :is="uploadButton"></component>
+    asdfsdfs
+    <!-- <component :is="uploadButton"></component> -->
     <!-- <div>axios</div>
     <input type="file"
       @change="onFileChange"> {{showpesent}}
@@ -18,8 +19,8 @@ export default {
     return {
       isShowPesent: false,
       showpesent: '',
-      filePath: '',
-      uploadButton: 'uploadButton'
+      filePath: ''
+      // uploadButton: 'uploadButton'
     }
   },
 

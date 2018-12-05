@@ -5,4 +5,5 @@ const { setMap, proxy } = define
 const router = {
   routes: [setMap, proxy]
 }
+
 export default new Router(router)
