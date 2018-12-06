@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="example">
+    <div class="example"
+      @click="onRedClick">
       <label v-for="(item,index) in radioList"
         :key="item.value"
         :for="item.linkLabel"
@@ -54,7 +55,7 @@ export default {
         {
           linkLabel: 'label3',
           value: '3',
-          isDisabled: true,
+          isDisabled: false,
           isFocus: false,
           label: '标签3'
         }
@@ -66,9 +67,13 @@ export default {
 
   methods: {
     onRedClick() {
+      this.radioList.forEach(item => {
+        console.log(item)
+      })
       this.isShow = !this.isShow
     }
-  }
+  },
+  created() {}
 }
 </script>
 

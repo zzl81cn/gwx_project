@@ -19,12 +19,25 @@ const callHook = resolve =>
     () => resolve(require('@/page/modules/explore/callHook')),
     'explore'
   )
+const border = resolve =>
+  require.ensure(
+    [],
+    () => resolve(require('@/page/modules/explore/css/border')),
+    'explore'
+  )
+const grid = resolve =>
+  require.ensure(
+    [],
+    () => resolve(require('@/page/modules/explore/css/grid')),
+    'explore'
+  )
 const vuxInput = resolve =>
   require.ensure(
     [],
     () => resolve(require('@/page/modules/vueApi/vModel/input')),
     'vueApi'
   )
+
 const vModel = resolve =>
   require.ensure(
     [],
@@ -67,6 +80,12 @@ const mixins = resolve =>
     () => resolve(require('@/page/modules/practice/other/mixins')),
     'practice'
   )
+const hoc = resolve =>
+  require.ensure(
+    [],
+    () => resolve(require('@/page/modules/practice/other/hoc')),
+    'practice'
+  )
 export default {
   setMap: {
     path: '/es6/setmap',
@@ -92,6 +111,16 @@ export default {
     path: '/explore/vuxinput',
     name: 'vuxInput',
     component: vuxInput
+  },
+  border: {
+    path: '/explore/css/border',
+    name: 'border',
+    component: border
+  },
+  grid: {
+    path: '/explore/css/grid',
+    name: 'grid',
+    component: grid
   },
   callHook: {
     path: '/explore/callhook',
@@ -132,5 +161,10 @@ export default {
     path: '/practice/other/mixins',
     name: 'mixins',
     component: mixins
+  },
+  hoc: {
+    path: '/practice/other/hoc',
+    name: 'hoc',
+    component: hoc
   }
 }

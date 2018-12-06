@@ -8,6 +8,7 @@
 * value：单选按钮的值，选中某个单选按钮相当于拿到 value 值 tip：用于识别组中的哪个单选按钮被选中。
 * checked 用于设置默认选中的 radio
 * v-model 创建双向数据绑定。 会忽略所有表单元素的 value、checked、selected 特性的初始值而总是将 Vue 实例的数据作为数据来源。
+* 用 v-mode 绑定的值和 value 绑定的值对比来确定是否为 checked 状态
 
 ```
 // html

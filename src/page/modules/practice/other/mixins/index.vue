@@ -7,7 +7,7 @@
       <hoc value="传入值"
         @testClick="onTestClick">
         4654
-        <p slot="test">15</p>
+        <p slot="test">15515</p>
       </hoc>
     </div>
   </div>
