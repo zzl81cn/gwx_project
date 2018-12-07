@@ -5,7 +5,6 @@
   "author": "官万晓 <gwx@spacetech.com.cn>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js",
     "dev:es6": "webpack-dev-server  --inline --progress  --open --config build/webpack.dev.conf.js --config-name es6",
     "dev:axios": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name axios",
     "dev:explore": "webpack-dev-server  --inline --progress --open --config build/webpack.dev.conf.js --config-name explore",

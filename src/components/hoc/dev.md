@@ -16,3 +16,7 @@
 
 [使用案例](https://github.com/ktsn/vuex-connect)
 [jsx 转换](https://github.com/vuejs/babel-plugin-transform-vue-jsx#usage)
+[vue-class-component](https://github.com/vuejs/vue-class-component)
+[组件](http://www.alloyteam.com/2017/07/12918/)
+[vue 官网](https://cn.vuejs.org/v2/guide/render-function.html)
+[render 函数](http://doc.vue-js.com/v2/guide/render-function.html)
