@@ -1,7 +1,7 @@
 export default component => {
   return {
     mounted() {
-      console.log('hoc is good ', this, this.$props)
+      console.log('hoc is good ', this, this.$listeners)
     },
     // hoc 组件本身没有设置props 需要设置传入的组件相同的props
     props: component.props,
@@ -14,7 +14,10 @@ export default component => {
       return h(component, {
         attrs: this.$attrs,
         props: this.$props,
-        scopedSlots: slots
+        scopedSlots: slots,
+        on: {
+          'customize-click': this.$listeners['customize-click']
+        }
       })
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span @click="handleClick">props: {{test}}</span>
+    <span @click="handleClick">props: {{prop}}</span>
     <slot name="test"></slot>
     ============
     <slot></slot>
@@ -15,10 +15,20 @@ export default {
   props: {
     test: Number
   },
+  data() {
+    return {
+      prop: ''
+    }
+  },
   methods: {
     handleClick() {
-      this.$emit('customize-click')
+      this.prop++
+      this.$emit('customize-click', this.prop)
     }
+  },
+  created() {
+    this.prop = this.test
+    console.log(this.$listeners, 'create')
   }
 }
 </script>
