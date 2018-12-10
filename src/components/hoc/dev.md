@@ -20,3 +20,4 @@
 [组件](http://www.alloyteam.com/2017/07/12918/)
 [vue 官网](https://cn.vuejs.org/v2/guide/render-function.html)
 [render 函数](http://doc.vue-js.com/v2/guide/render-function.html)
+[函数组件化](https://www.jianshu.com/p/0645bc9033a5)

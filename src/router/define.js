@@ -25,6 +25,12 @@ const border = resolve =>
     () => resolve(require('@/page/modules/explore/css/border')),
     'explore'
   )
+const gpu = resolve =>
+  require.ensure(
+    [],
+    () => resolve(require('@/page/modules/explore/css/gpu')),
+    'explore'
+  )
 const grid = resolve =>
   require.ensure(
     [],
@@ -116,6 +122,11 @@ export default {
     path: '/explore/css/border',
     name: 'border',
     component: border
+  },
+  gpu: {
+    path: '/explore/css/gpu',
+    name: 'gpu',
+    component: gpu
   },
   grid: {
     path: '/explore/css/grid',

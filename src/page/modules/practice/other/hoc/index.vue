@@ -1,6 +1,11 @@
 <template>
   <div class="hoc">
-    <vfor></vfor>
+    <div v-for="item in list"
+      :key="item">
+      <base-c :name="item"> </base-c>
+    </div>
+    <!-- <test></test> -->
+    <!-- <vfor></vfor> -->
     <!-- <vmodel></vmodel> -->
     <!-- <input type="text"
       v-model="number">
@@ -33,6 +38,9 @@ import judge from './components/judge.vue'
 
 import vmodel from './jsx/vmodel.vue'
 import vfor from './jsx/vfor.vue'
+import test from './jsx/test.vue'
+
+import baseC from './jsx/baseC.vue'
 export default {
   name: 'hoc',
   components: {
@@ -41,11 +49,14 @@ export default {
     jsxTep,
     judge,
     vmodel,
-    vfor
+    vfor,
+    test,
+    baseC
   },
   data() {
     return {
-      number: 0
+      number: 0,
+      list: ['yi', 'sec']
     }
   },
   methods: {
