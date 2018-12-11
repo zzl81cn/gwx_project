@@ -1,97 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-const setMap = resolve =>
-  require.ensure([], () => resolve(require('@/page/modules/es6/setMap')), 'es6')
-const proxy = resolve =>
-  require.ensure([], () => resolve(require('@/page/modules/es6/proxy')), 'es6')
-const promise = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/es6/promise')),
-    'es6'
-  )
-const axios = resolve =>
-  require.ensure([], () => resolve(require('@/page/modules/axios')), 'axios')
-const callHook = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/explore/callHook')),
-    'explore'
-  )
-const border = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/explore/css/border')),
-    'explore'
-  )
-const gpu = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/explore/css/gpu')),
-    'explore'
-  )
-const grid = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/explore/css/grid')),
-    'explore'
-  )
-const vuxInput = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/vueApi/vModel/input')),
-    'vueApi'
-  )
-
-const vModel = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/vueApi/vModel')),
-    'vueApi'
-  )
-const replace = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/regExp/replace')),
-    'regExp'
-  )
-const reverseNumber = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/practice/string/reverseNumber')),
-    'practice'
-  )
-const zeroCount = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/practice/number/zeroCount')),
-    'practice'
-  )
-const twoPoint = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/practice/array/twoPoint')),
-    'practice'
-  )
-const radio = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/practice/other/radio')),
-    'practice'
-  )
-const mixins = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/practice/other/mixins')),
-    'practice'
-  )
-const hoc = resolve =>
-  require.ensure(
-    [],
-    () => resolve(require('@/page/modules/practice/other/hoc')),
-    'practice'
-  )
+const setMap = () => import('@/page/modules/es6/setMap')
+const proxy = () => import('@/page/modules/es6/proxy')
+const promise = () => import('@/page/modules/es6/promise')
+const axios = () => import('@/page/modules/axios')
+const callHook = () => import('@/page/modules/explore/callHook')
+const border = () => import('@/page/modules/explore/css/border')
+const gpu = () => import('@/page/modules/explore/css/gpu')
+const grid = () => import('@/page/modules/explore/css/grid')
+const vuxInput = () => import('@/page/modules/vueApi/vModel/input')
+const vModel = () => import('@/page/modules/vueApi/vModel')
+const replace = () => import('@/page/modules/regExp/replace')
+const reverseNumber = () =>
+  import('@/page/modules/practice/string/reverseNumber')
+const zeroCount = () => import('@/page/modules/practice/number/zeroCount')
+const twoPoint = () => import('@/page/modules/practice/array/twoPoint')
+const radio = () => import('@/page/modules/practice/other/radio')
+const mixins = () => import('@/page/modules/practice/other/mixins')
+const hoc = () => import('@/page/modules/practice/other/hoc')
 export default {
   setMap: {
     path: '/es6/setmap',
