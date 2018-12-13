@@ -2,12 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 const setMap = () => import('@/page/modules/es6/setMap')
+const generator = () => import('@/page/modules/es6/generator')
 const proxy = () => import('@/page/modules/es6/proxy')
 const promise = () => import('@/page/modules/es6/promise')
+const async = () => import('@/page/modules/es6/async')
 const axios = () => import('@/page/modules/axios')
 const callHook = () => import('@/page/modules/explore/callHook')
 const border = () => import('@/page/modules/explore/css/border')
 const gpu = () => import('@/page/modules/explore/css/gpu')
+const scroll = () => import('@/page/modules/explore/event/scroll')
 const grid = () => import('@/page/modules/explore/css/grid')
 const vuxInput = () => import('@/page/modules/vueApi/vModel/input')
 const vModel = () => import('@/page/modules/vueApi/vModel')
@@ -20,6 +23,11 @@ const radio = () => import('@/page/modules/practice/other/radio')
 const mixins = () => import('@/page/modules/practice/other/mixins')
 const hoc = () => import('@/page/modules/practice/other/hoc')
 export default {
+  generator: {
+    path: '/es6/generator',
+    name: 'generator',
+    component: generator
+  },
   setMap: {
     path: '/es6/setmap',
     name: 'setMap',
@@ -35,6 +43,11 @@ export default {
     name: 'promise',
     component: promise
   },
+  async: {
+    path: '/es6/async',
+    name: 'async',
+    component: async
+  },
   axios: {
     path: '/axios',
     name: 'axios',
@@ -44,6 +57,11 @@ export default {
     path: '/explore/vuxinput',
     name: 'vuxInput',
     component: vuxInput
+  },
+  scroll: {
+    path: '/explore/event/scroll',
+    name: 'scroll',
+    component: scroll
   },
   border: {
     path: '/explore/css/border',

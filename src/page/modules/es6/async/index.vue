@@ -1,0 +1,57 @@
+<template>
+  <div class="async">
+    <div @click="onCreateAsyncClick">create generator</div>
+    <div @click="onExecuteClick">execute</div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'async',
+
+  data() {
+    return {
+      asyncFn: () => {},
+      studentList: []
+    }
+  },
+
+  methods: {
+    reFindStudent() {
+      return this.$callApi({
+        api: 'user_user_listIdentity',
+        params: {
+          campusid: 1615,
+          openid: 'oD7tauP-p8_u-FgpipjwleMBorKA',
+          userid: '1047184'
+        }
+      })
+    },
+    step2() {
+      console.log('开始执行step2')
+      this.reFindStudent().then(() => {
+        console.log('step2执行结束')
+      })
+    },
+    onCreateAsyncClick() {
+      async function createAsync() {
+        await this.reFindStudent().then(data => {
+          this.studentList = data
+          console.log('step1执行结束')
+        })
+        await this.step2()
+        return this.studentList
+      }
+      this.asyncFn = createAsync
+    },
+    onExecuteClick() {
+      this.asyncFn().then(data => {
+        console.log('最终结果 : ' + JSON.stringify(data))
+      })
+    }
+  }
+}
+</script>
+
+<style lang='scss' scoped>
+</style>

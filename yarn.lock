@@ -7778,6 +7778,10 @@ throttle-debounce@^1.0.1:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/throttle-debounce/download/throttle-debounce-1.1.0.tgz#51853da37be68a155cb6e827b3514a3c422e89cd"
 
+throttle-debounce@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/throttle-debounce/download/throttle-debounce-2.0.1.tgz#7307ddd6cd9acadb349132fbf6c18d78c88a5e62"
+
 through2@^2.0.0:
   version "2.0.3"
   resolved "http://registry.npm.taobao.org/through2/download/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
