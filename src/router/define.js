@@ -22,6 +22,7 @@ const twoPoint = () => import('@/page/modules/practice/array/twoPoint')
 const radio = () => import('@/page/modules/practice/other/radio')
 const mixins = () => import('@/page/modules/practice/other/mixins')
 const hoc = () => import('@/page/modules/practice/other/hoc')
+const echart = () => import('@/page/modules/practice/other/echart')
 export default {
   generator: {
     path: '/es6/generator',
@@ -122,5 +123,10 @@ export default {
     path: '/practice/other/hoc',
     name: 'hoc',
     component: hoc
+  },
+  echart: {
+    path: '/practice/other/echart',
+    name: 'echart',
+    component: echart
   }
 }
