@@ -7,7 +7,7 @@ export default {
   },
   render() {
     return (
-      <div>
+      <div class="tag__wrap">
         {this.tagList.map((item, index) => {
           return <el-tag key={index}>{item}</el-tag>
         })}
@@ -16,3 +16,11 @@ export default {
   }
 }
 </script>
+<style>
+.tag__wrap {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+</style>

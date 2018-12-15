@@ -1,10 +1,7 @@
 <template>
   <div class="hoc">
-    <div v-for="item in list"
-      :key="item">
-      <base-c :name="item"> </base-c>
-    </div>
-    <!-- <test></test> -->
+    <sync></sync>
+    <!-- <spread></spread> -->
     <!-- <vfor></vfor> -->
     <!-- <vmodel></vmodel> -->
     <!-- <input type="text"
@@ -38,9 +35,8 @@ import judge from './components/judge.vue'
 
 import vmodel from './jsx/vmodel.vue'
 import vfor from './jsx/vfor.vue'
-import test from './jsx/test.vue'
-
-import baseC from './jsx/baseC.vue'
+import sync from './jsx/sync.vue'
+import spread from './jsx/spread.vue'
 export default {
   name: 'hoc',
   components: {
@@ -50,8 +46,8 @@ export default {
     judge,
     vmodel,
     vfor,
-    test,
-    baseC
+    sync,
+    spread
   },
   data() {
     return {
