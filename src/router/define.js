@@ -9,6 +9,8 @@ const async = () => import('@/page/modules/es6/async')
 const axios = () => import('@/page/modules/axios')
 const callHook = () => import('@/page/modules/explore/callHook')
 const border = () => import('@/page/modules/explore/css/border')
+const gradient = () => import('@/page/modules/explore/css/gradient')
+const rotate = () => import('@/page/modules/explore/css/rotate')
 const gpu = () => import('@/page/modules/explore/css/gpu')
 const scroll = () => import('@/page/modules/explore/event/scroll')
 const grid = () => import('@/page/modules/explore/css/grid')
@@ -68,6 +70,16 @@ export default {
     path: '/explore/css/border',
     name: 'border',
     component: border
+  },
+  gradient: {
+    path: '/explore/css/gradient',
+    name: 'gradient',
+    component: gradient
+  },
+  rotate: {
+    path: '/explore/css/rotate',
+    name: 'rotate',
+    component: rotate
   },
   gpu: {
     path: '/explore/css/gpu',
