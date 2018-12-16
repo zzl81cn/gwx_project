@@ -24,11 +24,41 @@ export default {
         { name: 'fish', time: 1 },
         { name: 'fish1', time: 2 },
         { name: 'fish3', time: 10 }
-      ]
+      ],
+      iteratorFn: () => {},
+      arr: [12, 15]
     }
   },
 
   methods: {
+    createGenerator() {
+      this.iteratorFn = function* generator(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          yield arr[i]
+        }
+      }
+    },
+    // 创建一个遍历器
+    createIterator(arr) {
+      this.iteratorFn = function iterator(arr) {
+        let iteratorIndex = 0
+        return {
+          next() {
+            if (iteratorIndex < arr.length) {
+              return {
+                // 先去arr中第iteratorIndex位数组项然后++
+                value: arr[iteratorIndex++],
+                done: false
+              }
+            } else {
+              return {
+                done: true
+              }
+            }
+          }
+        }
+      }
+    },
     dish(i) {
       this.promise(i)
         .then(k => {
