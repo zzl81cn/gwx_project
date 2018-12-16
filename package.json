@@ -19,6 +19,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@tweenjs/tween.js": "tweenjs/tween.js",
     "axios": "^0.18.0",
     "mockjs": "^1.0.1-beta3",
     "qs": "^6.5.2",

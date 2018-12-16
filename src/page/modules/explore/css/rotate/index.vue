@@ -75,22 +75,9 @@ body {
   margin: 0 auto;
   border-radius: 50%;
   /*间隔色的关键代码*/
-  background-image: linear-gradient(
-    45deg,
-    #f66 0%,
-    #fff 5%,
-    #f66 10%,
-    #fff 15%,
-    #f66 20%,
-    #fff 25%,
-    #000 50%,
-    #fff 50%,
-    #fff 75%,
-    #000 75%,
-    #000 100%
-  );
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 0, 0.8));
   /* 把刚才的背景压缩到100px * 100px以内的，没有设定不重复所以是重复的 */
-  background-size: 100px 100px;
+  // background-size: 100px 100px;
   /* 一秒播一次的永动动画 */
   animation: move 3s linear infinite;
 }

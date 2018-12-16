@@ -9,10 +9,23 @@ const {
   gpu,
   scroll,
   gradient,
-  rotate
+  rotate,
+  svg,
+  stroke
 } = define
 const router = {
-  routes: [callHook, vuxInput, border, grid, gpu, scroll, gradient, rotate]
+  routes: [
+    callHook,
+    vuxInput,
+    border,
+    grid,
+    gpu,
+    scroll,
+    gradient,
+    rotate,
+    svg,
+    stroke
+  ]
 }
 
 export default new Router(router)

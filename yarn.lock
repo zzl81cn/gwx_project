@@ -117,6 +117,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@tweenjs/tween.js@tweenjs/tween.js":
+  version "17.2.0"
+  resolved "https://codeload.github.com/tweenjs/tween.js/tar.gz/f58e2f0e6f979ac8261952b1292501a7fed6afcf"
+
 "@types/node@*", "@types/node@^10.11.7":
   version "10.12.0"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"

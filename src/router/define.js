@@ -11,7 +11,9 @@ const callHook = () => import('@/page/modules/explore/callHook')
 const border = () => import('@/page/modules/explore/css/border')
 const gradient = () => import('@/page/modules/explore/css/gradient')
 const rotate = () => import('@/page/modules/explore/css/rotate')
+const svg = () => import('@/page/modules/explore/css/svg')
 const gpu = () => import('@/page/modules/explore/css/gpu')
+const stroke = () => import('@/page/modules/explore/css/svg/stroke')
 const scroll = () => import('@/page/modules/explore/event/scroll')
 const grid = () => import('@/page/modules/explore/css/grid')
 const vuxInput = () => import('@/page/modules/vueApi/vModel/input')
@@ -81,10 +83,20 @@ export default {
     name: 'rotate',
     component: rotate
   },
+  svg: {
+    path: '/explore/css/svg',
+    name: 'svg',
+    component: svg
+  },
   gpu: {
     path: '/explore/css/gpu',
     name: 'gpu',
     component: gpu
+  },
+  stroke: {
+    path: '/explore/css/svg/stroke',
+    name: 'stroke',
+    component: stroke
   },
   grid: {
     path: '/explore/css/grid',
