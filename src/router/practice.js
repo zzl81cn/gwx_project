@@ -8,10 +8,20 @@ const {
   mixins,
   radio,
   hoc,
-  echart
+  echart,
+  chart
 } = define
 const router = {
-  routes: [reverseNumber, zeroCount, twoPoint, mixins, radio, hoc, echart]
+  routes: [
+    reverseNumber,
+    zeroCount,
+    twoPoint,
+    mixins,
+    radio,
+    hoc,
+    echart,
+    chart
+  ]
 }
 
 export default new Router(router)

@@ -28,6 +28,7 @@ const radio = () => import('@/page/modules/practice/other/radio')
 const mixins = () => import('@/page/modules/practice/other/mixins')
 const hoc = () => import('@/page/modules/practice/other/hoc')
 const echart = () => import('@/page/modules/practice/other/echart')
+const chart = () => import('@/page/modules/practice/other/echart/chart')
 export default {
   generator: {
     path: '/es6/generator',
@@ -158,5 +159,10 @@ export default {
     path: '/practice/other/echart',
     name: 'echart',
     component: echart
+  },
+  chart: {
+    path: '/practice/other/chart',
+    name: 'chart',
+    component: chart
   }
 }
