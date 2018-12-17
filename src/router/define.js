@@ -8,6 +8,7 @@ const promise = () => import('@/page/modules/es6/promise')
 const async = () => import('@/page/modules/es6/async')
 const axios = () => import('@/page/modules/axios')
 const callHook = () => import('@/page/modules/explore/callHook')
+const countUp = () => import('@/page/modules/explore/vux/countUp')
 const border = () => import('@/page/modules/explore/css/border')
 const gradient = () => import('@/page/modules/explore/css/gradient')
 const rotate = () => import('@/page/modules/explore/css/rotate')
@@ -107,6 +108,11 @@ export default {
     path: '/explore/callhook',
     name: 'callHook',
     component: callHook
+  },
+  countUp: {
+    path: '/explore/vux/countUp',
+    name: 'countUp',
+    component: countUp
   },
   vModel: {
     path: '/vueapi/vmodel',

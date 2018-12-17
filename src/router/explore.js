@@ -11,7 +11,8 @@ const {
   gradient,
   rotate,
   svg,
-  stroke
+  stroke,
+  countUp
 } = define
 const router = {
   routes: [
@@ -24,7 +25,8 @@ const router = {
     gradient,
     rotate,
     svg,
-    stroke
+    stroke,
+    countUp
   ]
 }
 

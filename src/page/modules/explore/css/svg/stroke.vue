@@ -12,9 +12,9 @@
           y2="0"
           id="gradient1">
           <stop offset="0%"
-            stop-color="#e52c5c"></stop>
+            stop-color="rgba(255,255,255,.3)"></stop>
           <stop offset="100%"
-            stop-color="#ab5aea"></stop>
+            stop-color="rgba(255,255,255,.76)"></stop>
         </linearGradient>
       </defs>
       <circle ref="all"
@@ -22,6 +22,10 @@
         cx="85"
         cy="85"
         r="80" />
+      <circle class="svg__dotted"
+        cx="85"
+        cy="85"
+        r="65"></circle>
       <circle ref="path"
         class="svg__circle"
         cx="85"
@@ -38,10 +42,10 @@
     <span class="svg__text">{{ animatedNumber }}</span>
   </div>
 </template>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 <script>
+import { TweenMax } from 'gsap/TweenMax'
 const path = 3.14 * 2 * 80
-const TWEEN = require('@tweenjs/tween.js')
+
 export default {
   name: 'stroke',
   computed: {
@@ -68,11 +72,12 @@ export default {
     this.completedPath = this.$refs.path.getTotalLength()
 
     console.log(this.completedPath)
-    this.$refs.path.style.strokeDashoffset = 50
+    this.$refs.path.style.strokeDashoffset = 0
+    this.number = 10000
   },
   watch: {
     number: function(newValue) {
-      TweenLite.to(this.$data, 0.5, { tweenedNumber: newValue })
+      TweenMax.to(this.$data, 2, { tweenedNumber: newValue })
     }
   }
 }
@@ -83,6 +88,7 @@ export default {
   width: 170px;
   height: 170px;
   position: relative;
+  background: linear-gradient(0deg, #16b1ff 0%, #4c76ae 100%);
 }
 .svg {
   &__text {
@@ -104,7 +110,14 @@ export default {
   &__line {
     stroke-width: 10;
     fill: none;
-    stroke: #d1d3d7;
+    stroke: transparent;
+  }
+  &__dotted {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 6;
+    stroke-dasharray: 2;
+    opacity: 0.6;
   }
 }
 // @keyframes move {
