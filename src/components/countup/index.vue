@@ -17,40 +17,63 @@ export default {
     })
   },
   props: {
+    tag: {
+      type: String,
+      default: 'span'
+    },
     start: {
       type: Boolean,
       default: true
     },
     startVal: {
-      type: Number,
-      default: 800
+      type: Number | String,
+      default: 0
     },
     endVal: {
       type: Number | String,
       required: true
     },
-    // number of decimal places in number
     decimals: {
       type: Number,
-      default: 0
+      default: 2
     },
-    // duration in seconds
     duration: {
       type: Number,
       default: 2
+    },
+    isRestart: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
-    return {}
+    return {
+      times: 0
+    }
   },
-
   methods: {
     onPauseResumeClick() {
-      this._countup.pauseResume()
+      if (this.isRestart) {
+        if (this.times === 0) {
+          this._countup.pauseResume()
+          this.times++
+        } else {
+          this._countup.restart()
+          this.times = 0
+        }
+      }
     }
   },
   render(h) {
-    return h('span', {}, [this.startVal])
+    return h(
+      this.tag,
+      {
+        on: {
+          click: this.onPauseResumeClick
+        }
+      },
+      [this.startVal]
+    )
   },
   watch: {
     start(val) {

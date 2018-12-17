@@ -4,7 +4,11 @@
     <input v-model="endVal"
       type="text">
     <div class="example">
-      <count :endVal="endVal"></count>
+      <count tag="p"
+        :isRestart="true"
+        :endVal="endVal"
+        :duration="2"
+        :decimals="2"></count>
     </div>
   </div>
 </template>
@@ -18,7 +22,7 @@ export default {
   },
   data() {
     return {
-      endVal: 200
+      endVal: 500
     }
   },
 
