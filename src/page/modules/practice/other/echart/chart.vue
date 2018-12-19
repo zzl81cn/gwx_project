@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import { debounce } from 'throttle-debounce'
 const singleWidth = 38
+const duration = 100
 export default {
   name: 'chart',
   computed: {
@@ -97,12 +97,12 @@ export default {
         '12/2'
       ],
       scrollListenHandle: () => {
-        console.log(222)
-
         this.scrollLength = this.$refs.scroll.scrollLeft
       },
       isCenter: false,
-      clickIndex: -1
+      clickIndex: -1,
+      currentLeft: 0,
+      speed: 0
     }
   },
   mounted() {
@@ -115,22 +115,29 @@ export default {
   },
   methods: {
     onTouchMove() {
-      console.log(333)
-
       this.isCenter = true
       this.clickIndex = -1
     },
-    onSelectDateClick(index) {
-      this.isCenter = false
-      const debounceFn = debounce(100, () => {
-        console.log(111)
-
-        this.$refs.scroll.scrollLeft =
-          index * singleWidth - this.screenWidth / 2
+    update() {
+      this.rAF = setInterval(() => {
+        const time = new Date() - this.startTime
+        this.$refs.scroll.scrollLeft = time * this.speed + this.currentLeft
+        if (time > duration) {
+          clearInterval(this.rAF)
+        }
       })
+    },
+    onSelectDateClick(index) {
       this.clickIndex = index
-
-      debounceFn()
+      this.isCenter = false
+      if (index * singleWidth - this.screenWidth / 2 > this.moveLength) {
+        return
+      }
+      const targetLeft = index * singleWidth - this.screenWidth / 2
+      this.currentLeft = this.$refs.scroll.scrollLeft
+      this.speed = (targetLeft - this.currentLeft) / duration
+      this.startTime = new Date()
+      this.update()
     }
   }
 }
