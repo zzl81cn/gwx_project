@@ -17,12 +17,7 @@ class CountUp {
     this.endVal = Number(this.endVal)
     this.frameVal = this.startVal
     this.startTime = new Date()
-    this.progress = Math.abs(this.endVal - this.frameVal)
-    this.execute()
-  }
-  // 执行更新
-  execute() {
-    this.isCountDown = this.frameVal < this.endVal
+    this.progress = this.endVal - this.frameVal
     this.update()
   }
   // 更新
@@ -36,9 +31,7 @@ class CountUp {
         this.frameVal = this.endVal
         this.startVal = this.frameVal
       } else {
-        this.frameVal = this.isCountDown
-          ? this.startVal + speed
-          : this.startVal - speed
+        this.frameVal = this.startVal + speed
       }
       this.printValue(this.frameVal)
     })

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>暂停</div>
     <input v-model="endVal"
       type="text">
     <div class="example">
