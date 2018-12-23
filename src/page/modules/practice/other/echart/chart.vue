@@ -1,9 +1,9 @@
 <template>
   <div class="chart">
+    <div @click="onButtonClick">按钮</div>
     <div ref="scroll"
       class="chart__move"
       @touchmove="onTouchMove">
-      <!-- @touchmove="onTouchMove" -->
       <div ref="child"
         class="move__child"
         :style="{width:AllLength + 'px'}">
@@ -15,7 +15,7 @@
             :class="{'child__chart--white':selectIndex === index||clickIndex===index}"
             :style="{height:item/maxStep*180+'px'}"></div>
           <div class="child__date"
-            :class="{'child__date--blue':selectIndex === index}">{{dateList[index]}}</div>
+            :class="{'child__date--blue':selectIndex === index||clickIndex===index}">{{dateList[index]}}</div>
         </div>
       </div>
     </div>
@@ -97,6 +97,7 @@ export default {
         '12/2'
       ],
       scrollListenHandle: () => {
+        console.log('正在滚动')
         this.scrollLength = this.$refs.scroll.scrollLeft
       },
       isCenter: false,
@@ -114,6 +115,9 @@ export default {
     }
   },
   methods: {
+    onButtonClick() {
+      this.chartList.push(15, 15, 2, 121, 1)
+    },
     onTouchMove() {
       this.isCenter = true
       this.clickIndex = -1
@@ -129,16 +133,35 @@ export default {
     },
     onSelectDateClick(index) {
       this.clickIndex = index
+      console.log('正在点击')
+
       this.isCenter = false
-      if (index * singleWidth - this.screenWidth / 2 > this.moveLength) {
-        return
-      }
+      // if (index * singleWidth - this.screenWidth / 2 > this.moveLength) {
+      //   return
+      // }
       const targetLeft = index * singleWidth - this.screenWidth / 2
       this.currentLeft = this.$refs.scroll.scrollLeft
       this.speed = (targetLeft - this.currentLeft) / duration
       this.startTime = new Date()
       this.update()
     }
+  },
+  watch: {
+    chartList: {
+      handler(newArray) {
+        console.log(newArray)
+      },
+      deep: true
+    },
+    'chartList.length'(newArray) {
+      this.$refs.scroll.removeEventListener('scroll', this.scrollListenHandle)
+      console.log(this.$refs.scroll.addEventListener)
+
+      console.log(1111, newArray)
+    }
+  },
+  destroyed() {
+    this.$refs.scroll.removeEventListener('scroll', this.scrollListenHandle)
   }
 }
 </script>

@@ -12,9 +12,9 @@
           y2="0"
           id="gradient1">
           <stop offset="0%"
-            stop-color="rgba(255,255,255,.3)"></stop>
+            stop-color="rgba(20,25,255,.3)"></stop>
           <stop offset="100%"
-            stop-color="rgba(255,255,255,.76)"></stop>
+            stop-color="rgba(165,255,255,.76)"></stop>
         </linearGradient>
       </defs>
       <circle ref="all"
@@ -22,10 +22,10 @@
         cx="85"
         cy="85"
         r="80" />
-      <circle class="svg__dotted"
+      <!-- <circle class="svg__dotted"
         cx="85"
         cy="85"
-        r="65"></circle>
+        r="65"></circle> -->
       <circle ref="path"
         class="svg__circle"
         cx="85"
@@ -36,10 +36,10 @@
         :stroke-dashoffset="completedPath"
         transform="matrix(0,-1,1,0,0,170)" />
     </svg>
-    <input v-model.number="number"
+    <!-- <input v-model.number="number"
       type="number"
-      step="20">
-    <span class="svg__text">{{ animatedNumber }}</span>
+      step="20"> -->
+    <!-- <span class="svg__text">{{ animatedNumber }}</span> -->
   </div>
 </template>
 <script>
@@ -88,7 +88,6 @@ export default {
   width: 170px;
   height: 170px;
   position: relative;
-  background: linear-gradient(0deg, #16b1ff 0%, #4c76ae 100%);
 }
 .svg {
   &__text {
@@ -103,9 +102,10 @@ export default {
     stroke-width: 10;
     // stroke-dashoffset: 3.14 * 2 * 80;
     // stroke: #f66;
+    transform-origin: center center;
     fill: none;
     transition: 2s linear;
-    // animation: move 2s linear forwards;
+    animation: move 2s linear infinite;
   }
   &__line {
     stroke-width: 10;
@@ -120,12 +120,14 @@ export default {
     opacity: 0.6;
   }
 }
-// @keyframes move {
-//   0% {
-//     stroke-dashoffset: 3.14 * 2 * 80;
-//   }
-//   100% {
-//     stroke-dashoffset: 50;
-//   }
-// }
+@keyframes move {
+  0% {
+    // stroke-dashoffset: 3.14 * 2 * 80;
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+    // stroke-dashoffset: 0;
+  }
+}
 </style>
