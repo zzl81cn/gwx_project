@@ -9,6 +9,7 @@ const async = () => import('@/page/modules/es6/async')
 const axios = () => import('@/page/modules/axios')
 const callHook = () => import('@/page/modules/explore/callHook')
 const countUp = () => import('@/page/modules/explore/vux/countUp')
+const scrollBar = () => import('@/page/modules/explore/css/scroll')
 const border = () => import('@/page/modules/explore/css/border')
 const gradient = () => import('@/page/modules/explore/css/gradient')
 const rotate = () => import('@/page/modules/explore/css/rotate')
@@ -114,6 +115,11 @@ export default {
     path: '/explore/vux/countUp',
     name: 'countUp',
     component: countUp
+  },
+  scrollBar: {
+    path: '/explore/css/scroll',
+    name: 'scrollBar',
+    component: scrollBar
   },
   vModel: {
     path: '/vueapi/vmodel',
