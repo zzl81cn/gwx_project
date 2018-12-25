@@ -1,5 +1,7 @@
 <template>
   <div>
+    <x-button type="primary"
+      @click.native="reSave">保存</x-button>
     <input v-model="endVal"
       type="text">
     <div class="example">
@@ -14,10 +16,12 @@
 
 <script>
 import count from '@/components/countup'
+import { XButton } from 'vux'
 export default {
   name: '',
   components: {
-    count
+    count,
+    XButton
   },
   data() {
     return {
