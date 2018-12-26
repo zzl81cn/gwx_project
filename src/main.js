@@ -10,6 +10,7 @@ import componentList from './components/upload/component.js'
 // 引入vuex实例注入vue实例中
 import store from './store'
 import Vuex from 'vuex'
+import './styles/font.less'
 Vue.config.productionTip = false
 Vue.prototype.$callApi = callApi
 Vue.use(ElementUI, { size: 'medium' })

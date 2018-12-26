@@ -1,7 +1,8 @@
 <template>
   <div>
-    <x-button type="primary"
-      @click.native="reSave">保存</x-button>
+    <i class="weui-icon-circle"></i>
+    <i class="weui-icon-safe-success"></i>
+    <i class="weui-icon-checked"></i>
     <input v-model="endVal"
       type="text">
     <div class="example">
@@ -34,8 +35,30 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '../../../../../styles/font.scss';
 .example {
   color: red;
   font-size: 28px;
+}
+.input__checkbox {
+  font: normal normal normal 14px/1 'weui';
+  &:after {
+    content: '\EA01';
+    color: red;
+    font-size: 23px;
+    display: block;
+  }
+  &--checked {
+    &:after {
+      content: '\EA06';
+      font-size: 23px;
+      color: blue;
+    }
+  }
+  &--disabled {
+    &:after {
+      opacity: 0.5;
+    }
+  }
 }
 </style>
