@@ -1,9 +1,16 @@
 <template>
   <div>
-    <i class="weui-icon-circle"></i>
+    <x-button type="warn">submit</x-button>
+    <x-button type="default">submit</x-button>
+    <x-button type="primary">submit</x-button>
+    <group>
+      <datetime v-model="value"
+        :show.sync="visibility"></datetime>
+    </group>
+    <!-- <i class="weui-icon-circle"></i>
     <i class="weui-icon-safe-success"></i>
-    <i class="weui-icon-checked"></i>
-    <input v-model="endVal"
+    <i class="weui-icon-checked"></i> -->
+    <!-- <input v-model="endVal"
       type="text">
     <div class="example">
       <count tag="p"
@@ -11,22 +18,27 @@
         :endVal="endVal"
         :duration="2"
         :decimals="2"></count>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import count from '@/components/countup'
-import { XButton } from 'vux'
+import { XButton, XNumber, Group, Datetime } from 'vux'
 export default {
   name: '',
   components: {
     count,
-    XButton
+    XButton,
+    XNumber,
+    Group,
+    Datetime
   },
   data() {
     return {
-      endVal: 500
+      endVal: 500,
+      value: '',
+      visibility: true
     }
   },
 
