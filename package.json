@@ -25,6 +25,7 @@
     "gsap": "^2.0.2",
     "mockjs": "^1.0.1-beta3",
     "qs": "^6.5.2",
+    "remove": "^0.1.5",
     "throttle-debounce": "^2.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",

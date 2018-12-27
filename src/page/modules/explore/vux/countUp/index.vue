@@ -3,10 +3,10 @@
     <x-button type="warn">submit</x-button>
     <x-button type="default">submit</x-button>
     <x-button type="primary">submit</x-button>
-    <group>
+    <!-- <group>
       <datetime v-model="value"
         :show.sync="visibility"></datetime>
-    </group>
+    </group> -->
     <!-- <i class="weui-icon-circle"></i>
     <i class="weui-icon-safe-success"></i>
     <i class="weui-icon-checked"></i> -->
