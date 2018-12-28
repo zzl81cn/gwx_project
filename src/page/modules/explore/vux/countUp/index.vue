@@ -1,15 +1,7 @@
 <template>
   <div>
-    <x-button type="warn">submit</x-button>
-    <x-button type="default">submit</x-button>
-    <x-button type="primary">submit</x-button>
-    <!-- <group>
-      <datetime v-model="value"
-        :show.sync="visibility"></datetime>
-    </group> -->
-    <!-- <i class="weui-icon-circle"></i>
-    <i class="weui-icon-safe-success"></i>
-    <i class="weui-icon-checked"></i> -->
+    <i class="arrow">1</i>
+    <div class="arrow__left"></div>
     <!-- <input v-model="endVal"
       type="text">
     <div class="example">
@@ -48,6 +40,7 @@ export default {
 
 <style lang='scss' scoped>
 @import '../../../../../styles/font.scss';
+@import '../../../../../theme/index.scss';
 .example {
   color: red;
   font-size: 28px;
@@ -72,5 +65,17 @@ export default {
       opacity: 0.5;
     }
   }
+}
+.arrow {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-width: 2px 2px 0 0;
+  border-color: #f00;
+  border-style: solid;
+  transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+}
+.arrow__left {
+  @include setcheckedabs(#f60);
 }
 </style>
