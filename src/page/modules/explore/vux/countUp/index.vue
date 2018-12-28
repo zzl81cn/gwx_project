@@ -1,7 +1,9 @@
 <template>
   <div>
-    <i class="arrow">1</i>
+    <!-- <i class="arrow">1</i>
     <div class="arrow__left"></div>
+    <div class="arrow__right"></div> -->
+    <div class="arrow__line"></div>
     <!-- <input v-model="endVal"
       type="text">
     <div class="example">
@@ -77,5 +79,11 @@ export default {
 }
 .arrow__left {
   @include setcheckedabs(#f60);
+}
+.arrow__right {
+  @include setChecked;
+}
+.arrow__line {
+  @include settopline(#f60);
 }
 </style>
