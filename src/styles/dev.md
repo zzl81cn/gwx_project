@@ -56,4 +56,4 @@ module.exports = vuxLoader.merge(webpackConfig, {
 ![](https://user-gold-cdn.xitu.io/2018/12/27/167ee0fb3c4f2e77?w=383&h=164&f=png&s=4398)
 
 webpack 中 plugins 需要填什么
-思路： 介绍 vux 修改主题色 -> 如何写处自己的样式 -> sass 语法 -> font 引入
+思路： 介绍 vux 修改主题色 -> 如何写处自己的样式 (介绍常用样式，省略 ... ,过渡效果高度)-> sass 语法 -> font 引入

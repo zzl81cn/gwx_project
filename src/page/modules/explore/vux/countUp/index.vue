@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="wrap">
+      <div class="ellipsisLn">这是一段文字这是一段文字这是一段文字</div>
+    </div>
     <!-- <i class="arrow">1</i>
     <div class="arrow__left"></div>
     <div class="arrow__right"></div> -->
@@ -85,5 +88,12 @@ export default {
 }
 .arrow__line {
   @include settopline(#f60);
+}
+.ellipsisLn {
+  // width: 100px;
+  @include ellipsisLn(2);
+}
+.wrap {
+  width: 140px;
 }
 </style>
