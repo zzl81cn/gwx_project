@@ -1,13 +1,14 @@
-@mixin setcheckedabs($c) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  content: '';
-  width: 4px;
-  height: 8px;
-  border-bottom: 2px solid $c;
-  border-right: 2px solid $c;
-  transform: translate(-50%, -65%) rotate(45deg);
+@mixin setcheckedabs($width: 4, $height: 8, $borderWidth: 2, $c: #f00) {
+  &:after {
+    position: absolute;
+    top: 50%;
+    content: '';
+    width: $width + px;
+    height: $height + px;
+    border-bottom: $borderWidth + px solid $c;
+    border-right: $borderWidth + px solid $c;
+    transform: translateY(-75%) rotate(45deg);
+  }
 }
 
 @mixin setChecked($c: #000) {
@@ -37,7 +38,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  word-wrap: normal;
 }
 @mixin ellipsisLn($line) {
   overflow: hidden;
@@ -45,4 +45,28 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $line;
+}
+@mixin arrow($width: 6, $height: 6, $borderWidth: 1, $angle: 135) {
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: $width + px;
+    height: $height + px;
+    border-width: $borderWidth + px $borderWidth + px 0 0;
+    border-style: solid;
+    transform: translateY(-75%) rotate($angle + deg);
+  }
+}
+@mixin maxHeight($height, $time) {
+  .translation-enter-active,
+  .translation-leave-active {
+    overflow: hidden;
+    max-height: $height + px;
+    transition: max-height $time;
+  }
+  .translation-enter,
+  .translation-leave-to {
+    max-height: 0;
+  }
 }

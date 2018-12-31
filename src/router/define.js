@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
+const strategy = () => import('@/page/modules/designPatterns/strategy')
 const setMap = () => import('@/page/modules/es6/setMap')
 const generator = () => import('@/page/modules/es6/generator')
 const proxy = () => import('@/page/modules/es6/proxy')
@@ -18,6 +19,7 @@ const gpu = () => import('@/page/modules/explore/css/gpu')
 const stroke = () => import('@/page/modules/explore/css/svg/stroke')
 const scroll = () => import('@/page/modules/explore/event/scroll')
 const grid = () => import('@/page/modules/explore/css/grid')
+const codeJsx = () => import('@/page/modules/explore/codeJsx')
 const vuxInput = () => import('@/page/modules/vueApi/vModel/input')
 const vModel = () => import('@/page/modules/vueApi/vModel')
 const replace = () => import('@/page/modules/regExp/replace')
@@ -30,11 +32,17 @@ const mixins = () => import('@/page/modules/practice/other/mixins')
 const hoc = () => import('@/page/modules/practice/other/hoc')
 const echart = () => import('@/page/modules/practice/other/echart')
 const chart = () => import('@/page/modules/practice/other/echart/chart')
+
 export default {
   generator: {
     path: '/es6/generator',
     name: 'generator',
     component: generator
+  },
+  strategy: {
+    path: '/design/strategy',
+    name: 'strategy',
+    component: strategy
   },
   setMap: {
     path: '/es6/setmap',
@@ -105,6 +113,11 @@ export default {
     path: '/explore/css/grid',
     name: 'grid',
     component: grid
+  },
+  codeJsx: {
+    path: '/explore/jsx',
+    name: 'codeJsx',
+    component: codeJsx
   },
   callHook: {
     path: '/explore/callhook',

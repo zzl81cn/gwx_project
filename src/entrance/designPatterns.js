@@ -1,29 +1,19 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import App from '../App'
+// 引入路由页面
+import router from '../router/designPatterns'
 import ElementUI from 'element-ui'
-import callApi from './resource/api.js'
+import callApi from '../resource/api.js'
+import store from '../store'
 import 'element-ui/lib/theme-chalk/index.css'
-import componentList from './components/upload/component.js'
 // 引入vuex实例注入vue实例中
-import store from './store'
 import Vuex from 'vuex'
-import './styles/font.less'
-import VueSocketio from 'vue-socket.io'
-import socketio from 'socket.io-client'
-Vue.use(VueSocketio, socketio('http://localhost:8888/'))
 Vue.config.productionTip = false
 Vue.prototype.$callApi = callApi
 Vue.use(ElementUI, { size: 'medium' })
 Vue.use(Vuex)
-Vue.component('guan', {
-  template: '<h1>官万晓</h1>'
-})
-componentList.forEach(component => {
-  Vue.component(component.name, component)
-})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

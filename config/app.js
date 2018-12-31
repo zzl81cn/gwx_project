@@ -29,6 +29,11 @@ var apps = {
     name: 'vueApi',
     entry: './src/entrance/vueApi',
     APP_ENV: '"vueApi"'
+  },
+  designPatterns: {
+    name: 'designPatterns',
+    entry: './src/entrance/designPatterns',
+    APP_ENV: '"designPatterns"'
   }
 }
 
