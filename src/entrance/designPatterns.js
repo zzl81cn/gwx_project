@@ -10,6 +10,11 @@ import store from '../store'
 import 'element-ui/lib/theme-chalk/index.css'
 // 引入vuex实例注入vue实例中
 import Vuex from 'vuex'
+import { ToastPlugin, WechatPlugin, LoadingPlugin, ConfirmPlugin } from 'vux'
+Vue.use(WechatPlugin) //  微信
+Vue.use(ToastPlugin)
+Vue.use(LoadingPlugin)
+Vue.use(ConfirmPlugin)
 Vue.config.productionTip = false
 Vue.prototype.$callApi = callApi
 Vue.use(ElementUI, { size: 'medium' })
