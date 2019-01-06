@@ -1,10 +1,11 @@
 <template>
   <div>
-    <group>
+    123
+    <!-- <group>
       <x-input v-model="name"
         title="姓名"
         @on-blur="onSimpleValidate"></x-input>
-    </group>
+    </group> -->
   </div>
 </template>
 
@@ -12,6 +13,8 @@
 import { XInput, Group } from 'vux'
 import Validator from './utils.js'
 import validator from './simple'
+const name = 'guan'
+console.log(name)
 export default {
   name: 'strategy',
   components: {
@@ -63,8 +66,12 @@ export default {
       }
     }
   },
-  mounted() {}
+  mounted() {
+    const name = 'guan'
+    console.log(name)
+  }
 }
+// # sourceURL=settings.vue
 </script>
 
 <style lang='scss' scoped>

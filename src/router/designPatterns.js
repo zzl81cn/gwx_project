@@ -1,9 +1,9 @@
 import define from './define'
 import Router from 'vue-router'
 
-const { strategy } = define
+const { strategy, observer } = define
 const router = {
-  routes: [strategy]
+  routes: [strategy, observer]
 }
 
 export default new Router(router)
