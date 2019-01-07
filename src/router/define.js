@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-const observer = () => import('@/page/modules/designPatterns/observer')
+const flyweight = () => import('@/page/modules/designPatterns/flyweight/index.vue')
+const observer = () => import('@/page/modules/designPatterns/observer/index.vue')
 const strategy = () => import('@/page/modules/designPatterns/strategy')
 const setMap = () => import('@/page/modules/es6/setMap')
 const generator = () => import('@/page/modules/es6/generator')
@@ -44,6 +45,11 @@ export default {
     path: '/design/strategy',
     name: 'strategy',
     component: strategy
+  },
+  flyweight: {
+    path: '/design/flyweight',
+    name: 'flyweight',
+    component: flyweight
   },
   observer: {
     path: '/design/observer',
