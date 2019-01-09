@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
+const proxyModule = () => import('@/page/modules/designPatterns/proxy/index.vue')
 const flyweight = () => import('@/page/modules/designPatterns/flyweight/index.vue')
 const observer = () => import('@/page/modules/designPatterns/observer/index.vue')
 const strategy = () => import('@/page/modules/designPatterns/strategy')
@@ -50,6 +51,11 @@ export default {
     path: '/design/flyweight',
     name: 'flyweight',
     component: flyweight
+  },
+  proxyModule: {
+    path: '/design/proxy',
+    name: 'proxyModule',
+    component: proxyModule
   },
   observer: {
     path: '/design/observer',
