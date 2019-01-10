@@ -26,6 +26,7 @@ module.exports = {
     'space-before-function-paren': 0,
     'comma-spacing': ['error', { before: false, after: true }],
     semi: [0],
-    quotes: ['error', 'single']
+    quotes: ['error', 'single'],
+    // "eol-last": ["error", "never"]
   }
 }

@@ -8,6 +8,7 @@
 import shoes from './shoes.js'
 import assistant from './assistant.js'
 import ad from './ad.js'
+import Cache from './cache.js'
 export default {
   name: 'proxy',
 
@@ -21,7 +22,8 @@ export default {
 
   methods: {},
   created() {
-    console.log(ad)
+    const example = new Cache()
+    console.log(example.proxyAdd(1, 2))
   }
 }
 </script>
