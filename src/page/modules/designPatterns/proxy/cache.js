@@ -1,8 +1,11 @@
 class ProxyCache {
   constructor() {
+    // 用于存放缓存
     this.cache = {}
+    // 存放计算结果
     this.result = 0
   }
+  // ...list 来
   getAddResult(...list) {
     for (let item of list) {
       this.result += item
