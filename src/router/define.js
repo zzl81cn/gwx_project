@@ -5,6 +5,7 @@ const proxyModule = () => import('@/page/modules/designPatterns/proxy/index.vue'
 const flyweight = () => import('@/page/modules/designPatterns/flyweight/index.vue')
 const observer = () => import('@/page/modules/designPatterns/observer/index.vue')
 const strategy = () => import('@/page/modules/designPatterns/strategy')
+const classEs6 = () => import('@/page/modules/es6/class')
 const setMap = () => import('@/page/modules/es6/setMap')
 const generator = () => import('@/page/modules/es6/generator')
 const proxy = () => import('@/page/modules/es6/proxy')
@@ -66,6 +67,11 @@ export default {
     path: '/es6/setmap',
     name: 'setMap',
     component: setMap
+  },
+  classEs6: {
+    path: '/es6/class',
+    name: 'classEs6',
+    component: classEs6
   },
   proxy: {
     path: '/es6/proxy',
