@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
+const single = () => import('@/page/modules/designPatterns/single/index.vue')
 const proxyModule = () => import('@/page/modules/designPatterns/proxy/index.vue')
 const flyweight = () => import('@/page/modules/designPatterns/flyweight/index.vue')
 const observer = () => import('@/page/modules/designPatterns/observer/index.vue')
@@ -57,6 +58,11 @@ export default {
     path: '/design/proxy',
     name: 'proxyModule',
     component: proxyModule
+  },
+  single: {
+    path: '/design/single',
+    name: 'single',
+    component: single
   },
   observer: {
     path: '/design/observer',

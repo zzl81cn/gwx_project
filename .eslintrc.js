@@ -27,6 +27,8 @@ module.exports = {
     'comma-spacing': ['error', { before: false, after: true }],
     semi: [0],
     quotes: ['error', 'single'],
-    // "eol-last": ["error", "never"]
+    "no-array-constructor":0,
+    "no-extend-native":0,
+    "no-useless-call":0
   }
 }
