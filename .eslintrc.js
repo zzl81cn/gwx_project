@@ -29,6 +29,8 @@ module.exports = {
     quotes: ['error', 'single'],
     "no-array-constructor":0,
     "no-extend-native":0,
-    "no-useless-call":0
+    "no-useless-call":0,
+    // 缩进
+    "indent": [0 , 2]
   }
 }
