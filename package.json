@@ -28,7 +28,7 @@
     "qs": "^6.5.2",
     "remove": "^0.1.5",
     "socket.io-client": "^2.2.0",
-    "throttle-debounce": "^2.0.1",
+    "throttle-debounce": "^2.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-socket.io": "^3.0.4",
