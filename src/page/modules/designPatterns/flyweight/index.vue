@@ -2,16 +2,16 @@
   <div class="flyweight">
     <div @click="onCreateTeacher">查看老师</div>
     <div @click="debounceLog">debounceLog按钮</div>
-    <div @click="throttleLog">throttleLog按钮</div>
     <div ref="box"
       class='flyweight__box'></div>
+    <input @input="onInputChange" />
   </div>
 </template>
 
 <script>
 import Learn from './index.js'
 import { debounce } from 'throttle-debounce'
-import { clearTimeout } from 'timers'
+// import { throttle } from './throttle.js'
 export default {
   name: 'flyweight',
 
@@ -22,19 +22,13 @@ export default {
   },
 
   methods: {
-    throttle(method, scope) {
-      if (this.timer) {
-        clearTimeout(this.timer)
-      }
-      this.timer = setTimeout(() => {
-        method.call(scope)
-        this.timer = undefined
-      }, 1000)
-    },
     resizeChange() {
-      console.log(document.body.clientWidth)
-      this.$refs.box.style.height = document.body.clientWidth / 2 + 'px'
-      this.$refs.box.style.width = document.body.clientWidth / 2 + 'px'
+      console.log('clientWidth', document.body.clientWidth)
+      this.$refs.box.style.height = document.body.clientWidth / 8 + 'px'
+      this.$refs.box.style.width = document.body.clientWidth / 8 + 'px'
+    },
+    onInputChange() {
+      this.handle()
     },
     debounceLog() {
       debounce(1000, () => {
@@ -49,11 +43,7 @@ export default {
     }
   },
   mounted() {
-    window.onresize = () => {
-      // this.resizeChange()
-
-      this.throttle(this.resizeChange)
-    }
+    window.addEventListener('resize', this.handle())
   }
 }
 </script>

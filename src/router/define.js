@@ -25,6 +25,7 @@ const stroke = () => import('@/page/modules/explore/css/svg/stroke')
 const scroll = () => import('@/page/modules/explore/event/scroll')
 const grid = () => import('@/page/modules/explore/css/grid')
 const codeJsx = () => import('@/page/modules/explore/codeJsx')
+const throttle = () => import('@/page/modules/explore/throttle')
 const vuxInput = () => import('@/page/modules/vueApi/vModel/input')
 const vModel = () => import('@/page/modules/vueApi/vModel')
 const replace = () => import('@/page/modules/regExp/replace')
@@ -103,6 +104,11 @@ export default {
     path: '/explore/vuxinput',
     name: 'vuxInput',
     component: vuxInput
+  },
+  throttle: {
+    path: '/explore/throttle',
+    name: 'throttle',
+    component: throttle
   },
   scroll: {
     path: '/explore/event/scroll',
