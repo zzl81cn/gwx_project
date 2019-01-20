@@ -1,8 +1,7 @@
-# gwx的学习笔记
-## es6
-* [let和const整理](https://github.com/guanwanxiao/gwx-space/blob/master/es6/let%E5%92%8Cconst.md)
-## javaScript基础知识
-* [作用域的认识](https://github.com/guanwanxiao/gwx-space/blob/master/JavaScript/%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
+# gwx_project
+## 设计模式
+* [策略模式](https://github.com/guanwanxiao/gwx_project/tree/master/src/page/modules/designPatterns/strategy)
+* [单例模式](https://github.com/guanwanxiao/gwx_project/tree/master/src/page/modules/designPatterns/single)
+* [观察者模式](https://github.com/guanwanxiao/gwx_project/tree/master/src/page/modules/designPatterns/observer)
+* [工厂模式](https://github.com/guanwanxiao/gwx_project/tree/master/src/page/modules/designPatterns/工厂模式)
 ## vue源码学习
-* [前置基础]
-  * [flow语法](https://github.com/guanwanxiao/gwx-space/blob/master/vue/flow/dev.md)
