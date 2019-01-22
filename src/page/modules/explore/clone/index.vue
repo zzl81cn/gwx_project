@@ -5,14 +5,15 @@
 </template>
 
 <script>
-import { clone } from '../../../../utils/Object.js'
+import { clone, removeCycle } from '../../../../utils/Object.js'
 export default {
   name: '',
 
   data() {
     return {
       obj: { a: 12, b: undefined, c: null, d: { name: 'd' } },
-      newObj: {}
+      newObj: {},
+      newA: {}
     }
   },
 
@@ -20,6 +21,15 @@ export default {
     onCloneClick() {
       this.newObj = clone(this.obj)
     }
+  },
+  created() {
+    let a = { name: 'zz' }
+    let b = { name: 'bb' }
+    a.child = b
+    b.parent = a
+    this.newA = removeCycle(a)
+
+    console.log(JSON.parse(JSON.stringify(this.newA)))
   }
 }
 </script>
