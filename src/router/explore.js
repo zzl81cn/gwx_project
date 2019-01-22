@@ -15,7 +15,8 @@ const {
   countUp,
   scrollBar,
   codeJsx,
-  throttle
+  throttle,
+  clone
 } = define
 const router = {
   routes: [
@@ -32,7 +33,8 @@ const router = {
     countUp,
     scrollBar,
     codeJsx,
-    throttle
+    throttle,
+    clone
   ]
 }
 

@@ -26,6 +26,7 @@ const scroll = () => import('@/page/modules/explore/event/scroll')
 const grid = () => import('@/page/modules/explore/css/grid')
 const codeJsx = () => import('@/page/modules/explore/codeJsx')
 const throttle = () => import('@/page/modules/explore/throttle')
+const clone = () => import('@/page/modules/explore/clone')
 const vuxInput = () => import('@/page/modules/vueApi/vModel/input')
 const vModel = () => import('@/page/modules/vueApi/vModel')
 const replace = () => import('@/page/modules/regExp/replace')
@@ -109,6 +110,11 @@ export default {
     path: '/explore/throttle',
     name: 'throttle',
     component: throttle
+  },
+  clone: {
+    path: '/explore/clone',
+    name: 'clone',
+    component: clone
   },
   scroll: {
     path: '/explore/event/scroll',
