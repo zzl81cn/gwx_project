@@ -37,12 +37,49 @@ export const removeCycle = function (source) {
   return target
 }
 
+// 循环clone的方式
+/**
+ * 用循环遍历一棵树，需要借助一个栈，栈里面存储下一个需要拷贝的节点
+ * 首先我们往栈里放入种子数据，key用来存储放哪一个父元素的那一个子元素拷贝对象
+ * 然后遍历当前节点下的子元素，如果是对象就放到栈里，否则直接拷贝
+ * 当栈为空时就遍历完了
+*/
 export const cloneLoop = function(value) {
   const root = {}
-  const loopList = {
+  // 存储需要遍历的对象
+  const loopList = [ {
     parent: root,
     key: undefined,
     data: value
+  }]
+  while (loopList.length > 0) {
+    // 遍历栈的最后一项
+    const node = loopList.pop()
+    // 遍历当前元素的父级
+    const parent = node.parent
+    // 遍历当前元素的key值
+    const key = node.key
+    // 遍历当前元素的数据
+    const data = node.data
+    // 默认拷贝父级 res和root保持同一个引用
+    let res = parent
+    // 如果key有值时(有子节点时)则拷贝子元素
+    if (key !== undefined) {
+      // a = b = {} a,b都为变量 都会被赋值{} 可以看作先执行 b = {} 运算完结果为 {} 然后赋值给a
+      res = parent[key] = {}
+    }
+    for (let k in data) {
+      // 如果为对象则将对象推到 loopList 数组中继续遍历
+      if (isObject(data[k])) {
+        loopList.push({
+          parent: res,
+          key: k,
+          data: data[k]
+        })
+      } else {
+        res[k] = data[k]
+      }
+    }
   }
-  // while()
+  return root
 }
