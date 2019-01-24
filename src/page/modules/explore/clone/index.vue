@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { clone, removeCycle } from '../../../../utils/Object.js'
+import { clone, cloneLoop } from '../../../../utils/Object.js'
 export default {
   name: '',
 
@@ -23,13 +23,8 @@ export default {
     }
   },
   created() {
-    let a = { name: 'zz' }
-    let b = { name: 'bb' }
-    a.child = b
-    b.parent = a
-    this.newA = removeCycle(a)
-
-    console.log(JSON.parse(JSON.stringify(this.newA)))
+    this.newA = cloneLoop(this.obj)
+    console.log('newA', this.newA)
   }
 }
 </script>

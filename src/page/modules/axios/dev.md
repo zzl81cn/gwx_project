@@ -6,7 +6,75 @@
 import axios from 'axios';
 import qs from 'qs'; // 用来序列化post类型的数据
 ```
+## 使用方式
+![](./img/format.png)
+研发平台规定入参结构 
+```
+apiparams：{
+  params:{
+    // ...
+  }
+}
+```
+* 使用application/x-www-form-urlencoded format格式需要用qs序列号格式
+```
+import qs from 'qs'
+// 序列号入参
+const params = qs.stringify(
+  apiparams：
+    // 为了保证数据格式统一为JSON使用方法转一下
+    JSON.stringify(
+      {
+        params:{
+          // ...
+        }
+      }
+    )
+)
+```
+### 直接使用axios请求
+```
+import axios from 'axios'
+import qs from 'qs'
+export function callApi (param) {
+  const options = {
+    // 组装url api/pc/为了匹配proxyTable项实现代理
+    url: `${window.location.origin}/api/pc/schedule_listForStudent`,
+    method: 'post',
+    // 设置post请求头
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    // 发送序列号后的请求参数
+    data: param
+  }
+  return axios(options).then(res => {
+    return res
+  })
+}
+```
+### 实例化axios
+```
+import axios from 'axios'
+import qs from 'qs'
+// 设置baseURL
+axios.defaults.baseURL = `${window.location.origin}/api/pc/`
+// 设置请求头
+axios.defaults.headers.post['Content-Type'] =
+  'application/x-www-form-urlencoded; charset=UTF-8'
+const callApi = (api, param) => {
+  // 创建axios实例
+  const axiosInstance = axios.create({})
+  // 序列号入参
+  const params = qs.stringify({
+    apiparams: JSON.stringify({ params: param })
+  })
+  // 发起实力请求
+  return axiosInstance.post(api, params).then(data => {
+    return data
+  })
+}
+export default callApi
 
+```
 ## 运行环境
 
 ```
