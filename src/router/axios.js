@@ -1,9 +1,9 @@
 import define from './define'
 import Router from 'vue-router'
 
-const { axios } = define
+const { axios, crossDomain, extend } = define
 const router = {
-  routes: [axios]
+  routes: [axios, crossDomain, extend]
 }
 
 export default new Router(router)

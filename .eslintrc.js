@@ -31,6 +31,7 @@ module.exports = {
     "no-extend-native":0,
     "no-useless-call":0,
     // 缩进
-    "indent": [0 , 2]
+    "indent": [0 , 2],
+    "no-useless-constructor":0
   }
 }

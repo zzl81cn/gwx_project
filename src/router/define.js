@@ -12,7 +12,9 @@ const generator = () => import('@/page/modules/es6/generator')
 const proxy = () => import('@/page/modules/es6/proxy')
 const promise = () => import('@/page/modules/es6/promise')
 const async = () => import('@/page/modules/es6/async')
-const axios = () => import('@/page/modules/axios')
+const axios = () => import('@/page/modules/javascript/axios')
+const crossDomain = () => import('@/page/modules/javascript/crossDomain')
+const extend = () => import('@/page/modules/javascript/extend')
 const callHook = () => import('@/page/modules/explore/callHook')
 const countUp = () => import('@/page/modules/explore/vux/countUp')
 const scrollBar = () => import('@/page/modules/explore/css/scroll')
@@ -100,6 +102,16 @@ export default {
     path: '/axios',
     name: 'axios',
     component: axios
+  },
+  crossDomain: {
+    path: '/crossdomain',
+    name: 'crossDomain',
+    component: crossDomain
+  },
+  extend: {
+    path: '/extend',
+    name: 'extend',
+    component: extend
   },
   vuxInput: {
     path: '/explore/vuxinput',

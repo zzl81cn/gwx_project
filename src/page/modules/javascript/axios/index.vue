@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { callUploadApi } from '../../../resource/uploadOSSApi.js'
+import { callUploadApi } from '../../../../resource/uploadOSSApi.js'
 export default {
   name: 'axios',
 
