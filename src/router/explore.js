@@ -16,7 +16,8 @@ const {
   scrollBar,
   codeJsx,
   throttle,
-  clone
+  clone,
+  wrap
 } = define
 const router = {
   routes: [
@@ -34,7 +35,8 @@ const router = {
     scrollBar,
     codeJsx,
     throttle,
-    clone
+    clone,
+    wrap
   ]
 }
 

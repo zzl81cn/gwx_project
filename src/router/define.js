@@ -29,6 +29,7 @@ const grid = () => import('@/page/modules/explore/css/grid')
 const codeJsx = () => import('@/page/modules/explore/codeJsx')
 const throttle = () => import('@/page/modules/explore/throttle')
 const clone = () => import('@/page/modules/explore/clone')
+const wrap = () => import('@/page/modules/explore/wrap')
 const vuxInput = () => import('@/page/modules/vueApi/vModel/input')
 const vModel = () => import('@/page/modules/vueApi/vModel')
 const replace = () => import('@/page/modules/regExp/replace')
@@ -117,6 +118,11 @@ export default {
     path: '/explore/vuxinput',
     name: 'vuxInput',
     component: vuxInput
+  },
+  wrap: {
+    path: '/explore/wrap',
+    name: 'wrap',
+    component: wrap
   },
   throttle: {
     path: '/explore/throttle',
