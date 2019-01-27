@@ -5,10 +5,10 @@ function isObject(value) {
 }
 // 递归 clone对象和数组
 export const clone = function(obj) {
-  let target = Array.isArray(obj) ? [] : {}
-  if (!obj) {
-    return Object.prototype.toString.call(obj).slice(8, -1)
+  if (!isObject(obj)) {
+    return obj
   }
+  let target = Array.isArray(obj) ? [] : {}
   for (let key in obj) {
     target[key] = isObject(obj[key]) ? clone(obj[key]) : obj[key]
   }

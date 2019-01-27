@@ -5,11 +5,60 @@
  * @param {String} str  传入的字符串
  * @returns {String} 返回替换后的字符串
 */
-export function replaceBreakWithPTag(str) {
+export function replaceBreakWithPTag(str, style) {
   if (!str) {
     return ''
   } else {
-    str = '<p>' + str
-    return str.replace(/\n|\r/g, '</p><p>')
+    style = style || 'style="text-indent: 2em; margin: 10px 0;"'
+    str = `<p ${style}>` + str
+    return str.replace(/\n|\r/g, `</p><p ${style}>`)
   }
+}
+
+/**
+ * 实现文本换行和段落换行，需指定当行文本长度
+ * @param {String} str  传入的字符串
+ * @param {Number} length 当行文本长度
+ * @param {String} style p标签的行内样式
+ * @returns {String} 返回替换后的字符串
+*/
+export function wrapTextNumber(str, length, style) {
+  if (!str) {
+    return ''
+  } else {
+    // 每个段落的字符串
+    let resultList = []
+    // 通过\n标志将字符串分段
+    let phaseList = phaseWrapList(str)
+    // 对每个段落内的文字进行换行转换
+    phaseList.forEach(item => {
+      resultList.push(line(item, length, style))
+    })
+    // 将所有段落整合成一个字符串
+    return resultList.join('')
+  }
+}
+
+// 以\n,\r作为标志将文本切割成多个段落
+function phaseWrapList(str, length, style) {
+  let phaseList = []
+  let strLenth = str.length
+  for (let i = 0, j = 0; i < strLenth; i++) {
+    if (str[i] === '\n' || str[i] === '\r' || i === strLenth - 1) {
+      phaseList.push(str.substr(j, i))
+      j = i
+    }
+  }
+  return phaseList
+}
+// 对每个段落进行单行文字数限制
+function line(str, lineTextLength = 15, style) {
+  style = style || 'style="text-indent: 2em; margin: 10px 0;"'
+  let newString = ''
+  let listLength = Math.ceil(str.length / lineTextLength)
+  for (var i = 0; i < listLength; i++) {
+    newString += str.substring(i * lineTextLength, (i + 1) * lineTextLength) +
+        '<br/>'
+  }
+  return `<p ${style}>${newString}</p>`
 }
