@@ -3,7 +3,8 @@
     <div @click="onStartClick">生成一个promise接收一个函数作为入参</div>
     <div @click="onChangeClick">转为Promise对象</div>
     <div @click="onFnClick">fn</div>
-    <div @click="dish(0)">dish</div>
+    <div @click="onDishCreateClick(0)">依次生成菜名</div>
+    <div @click="onPromiseRaceClick(0)">PromiseRace</div>
   </div>
 </template>
 
@@ -17,20 +18,45 @@ export default {
         then: function(resolve, reject) {
           console.log('执行then')
           // resolve('菜已做好')
-          reject('菜已做好')
+          resolve('菜已做好')
         }
       },
       disheList: [
         { name: 'fish', time: 1 },
         { name: 'fish1', time: 2 },
-        { name: 'fish3', time: 10 }
+        { name: 'fish3', time: 1 }
       ],
       iteratorFn: () => {},
-      arr: [12, 15]
+      arr: [12, 15],
+      p1: new Promise(function(resolve, reject) {
+        let fn = a => {
+          console.log('p1执行了')
+          resolve(a)
+        }
+        setTimeout(fn, 500, 'P1')
+      }),
+      fnc() {
+        console.log('fnc')
+
+        return 15
+      }
     }
   },
 
   methods: {
+    onPromiseRaceClick() {
+      let newPromise = Promise.all([this.p1, this.fnc])
+      console.log(
+        'newPromise',
+        newPromise
+          .then(() => {
+            console.log('success')
+          })
+          .catch(() => {
+            console.log('error')
+          })
+      )
+    },
     createGenerator() {
       this.iteratorFn = function* generator(arr) {
         for (let i = 0; i < arr.length; i++) {
@@ -59,23 +85,39 @@ export default {
         }
       }
     },
-    dish(i) {
-      this.promise(i)
-        .then(k => {
-          return this.promise(k)
+    onDishCreateClick(i) {
+      this.createPromise(i)
+        /**
+         *
+         */
+        .then(i => {
+          return this.createPromise(i)
         })
-        .then(j => this.promise(j))
+        .then(i => this.createPromise(i))
     },
-    promise(i) {
+    createPromise(i) {
+      /**
+       *  Promise构造函数 接受一个函数作为参数
+       *  函数的两个参数分别是 resolve 和 reject来控制成功回调和失败
+       * */
       return new Promise((resolve, reject) => {
+        let timeOut = parseInt(Math.random() * 2 * 1000)
         const f = () => {
-          console.log(this.disheList[i].name, this.disheList[i].time)
-          if (i < 3) {
-            i++
-            resolve(i)
-          }
+          console.log(
+            'dish 名称 :',
+            this.disheList[i].name,
+            '\n',
+            'time : ',
+            timeOut
+          )
+          i++
+          resolve(i)
         }
-        setTimeout(f, this.disheList[i].time)
+        /**
+         * 实例化Promise对象时会立即注册 setTimeout 异步事件
+         * 在 setTimeout 函数中执行时会通过 resolve 将成功结果输出
+         */
+        setTimeout(f, timeOut)
       })
     },
     onFnClick() {

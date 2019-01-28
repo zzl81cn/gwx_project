@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Super1 } from './extend.js'
+import { Super1, Child, Parent } from './extend.js'
 import { interatorClone } from './test.js'
 export default {
   name: '',
@@ -24,7 +24,8 @@ export default {
       },
       obj1: {},
       str: null,
-      str1: undefined
+      str1: undefined,
+      instance: {}
     }
   },
 
@@ -57,6 +58,18 @@ export default {
   },
   mounted() {
     this.onResizeChange()
+    this.instance = new Child('guan', 29)
+    console.log('instance', this.instance)
+    // 这里 getName 是通过 this.instance来调用的，所以其中的this指向实例对象
+    console.log(this.instance.age)
+
+    console.log(Parent)
+    console.log(Object.getPrototypeOf(Child))
+
+    console.log(
+      '是否继承于parent',
+      Object.getPrototypeOf(Child) === Parent.proto
+    )
   }
 }
 </script>
