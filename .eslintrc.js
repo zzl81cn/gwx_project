@@ -32,6 +32,8 @@ module.exports = {
     "no-useless-call":0,
     // 缩进
     "indent": [0 , 2],
-    "no-useless-constructor":0
+    "no-useless-constructor":0,
+    // "effectively deprecated" methods - which Reflect.* replaces,
+    "prefer-reflect":[2]
   }
 }
