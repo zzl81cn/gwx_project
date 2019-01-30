@@ -66,7 +66,7 @@ export default {
               <div
                 class="homework__subject"
                 style={{
-                  backgroundColor: this.getColor.call(this, index)
+                  backgroundColor: Reflect.apply(this, index)
                 }}
               >
                 {item.courseName.slice(0, 1)}
@@ -83,13 +83,17 @@ export default {
                           {item.submit + item.correct}
                         </span>
                       </span>
-                      <span class="work__teacher">已批:{item.correct}</span>
+                      <span class="work__teacher">
+                        已批:
+                        {item.correct}
+                      </span>
                     </div>
                   ) : (
                     <div class="detail__class">
                       <span class="class__name">班级: {item.className}</span>
                       <span class="class__teacher">
-                        老师：{item.publisherName}
+                        老师：
+                        {item.publisherName}
                       </span>
                     </div>
                   )}

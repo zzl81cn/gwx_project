@@ -1,6 +1,6 @@
 // 判断是否为对象或者数组
 function isObject(value) {
-  const type = Object.prototype.toString.call(value).slice(8, -1)
+  const type = Reflect.toString(value).slice(8, -1)
   return type === 'Object' || type === 'Array'
 }
 // 递归 clone对象和数组
@@ -20,7 +20,7 @@ let hash = new WeakMap()
 // 递归 clone循环引用数据
 export const removeCycle = function (source) {
   // 如果是传入的不是对象则停止,输出值
-  if (Object.prototype.toString.call(source).slice(8, -1) !== 'Object') {
+  if (Reflect.toString(source).slice(8, -1) !== 'Object') {
     return source
   }
   // 判断WeakMap数据中是否有该对象,如果有则说明是循环引用数据类型,则停止递归返回

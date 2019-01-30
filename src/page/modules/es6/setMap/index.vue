@@ -68,7 +68,7 @@ export default {
       })
       // 执行匹配成功子项中定义的函数
       expList.forEach(([exp, fn]) => {
-        fn.call(this, this)
+        Reflect.apply(fn, this)
       })
     },
     onButtonClick() {
@@ -80,7 +80,7 @@ export default {
       // 将符合条件的数组遍历 并执行设定的方法
       typeList.forEach(([key, value]) => {
         // 改变方法中的this指向 并且可以传入参数,如果需要改变多个参数,可以用apply方法
-        value.call(this, this)
+        Reflect.apply(this)
       })
     },
     successCallback() {
@@ -91,7 +91,7 @@ export default {
         return reg.test(this.isTeacher + '_' + type)
       })
       typeList.forEach(([reg, fn]) => {
-        fn.call(this)
+        Reflect.apply(this)
       })
     }
   }

@@ -18,7 +18,8 @@ class ProxyCache {
     if (paramsString in this.cache) {
       return this.cache[paramsString]
     }
-    this.cache[paramsString] = this.getAddResult.apply(this, list)
+    this.cache[paramsString] =
+    Reflect.apply(this.getAddResult, this, list)
     return this.cache[paramsString]
   }
 }

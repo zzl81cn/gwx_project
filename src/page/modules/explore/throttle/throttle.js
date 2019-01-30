@@ -16,7 +16,7 @@ export const throttle = function (func, wait = 100) {
       const now = new Date().getTime();
       if (now > (previous + wait)) {
         previous = now;
-        func.apply(context, args);
+        Reflect.apply(func, context, args)
       }
   };
 }

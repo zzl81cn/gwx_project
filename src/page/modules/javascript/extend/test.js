@@ -18,7 +18,7 @@ function isObject(value) {
   return getType(value) === 'Object' || getType(value) === 'Array'
 }
 function getType(value) {
-  return Object.prototype.toString.call(value).slice(8, -1)
+  return Reflect.toString(value).slice(8, -1)
 }
 export function interatorClone(value) {
   let weakMap = new WeakMap()

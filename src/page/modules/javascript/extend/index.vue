@@ -48,7 +48,7 @@ export default {
       }
       const instance = new Sub('zs')
       instance.getParent()
-      console.log(Object.getPrototypeOf(instance))
+      console.log(Reflect.getPrototypeOf(this.instance))
     }
   },
   created() {
@@ -64,11 +64,11 @@ export default {
     console.log(this.instance.age)
 
     console.log(Parent)
-    console.log(Object.getPrototypeOf(Child))
+    console.log(Reflect.getPrototypeOf(Child))
 
     console.log(
       '是否继承于parent',
-      Object.getPrototypeOf(Child) === Parent.proto
+      Reflect.getPrototypeOf(Child) === Parent.proto
     )
   }
 }

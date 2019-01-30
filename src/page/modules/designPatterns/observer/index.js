@@ -12,7 +12,7 @@ class Observer {
     this.observerTeacher[name][id] = fn
   }
   takeOff({name, id}) {
-    delete this.observerTeacher[name][id]
+    Reflect.deleteProperty(this.observerTeacher[name], 'id')
   }
   trigger(name) {
     if (!this.observerTeacher[name]) return

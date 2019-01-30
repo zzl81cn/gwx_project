@@ -5,15 +5,19 @@
     <div @click="onFnClick">fn</div>
     <div @click="onDishCreateClick(0)">依次生成菜名</div>
     <div @click="onPromiseRaceClick(0)">PromiseRace</div>
+    <dir @click="onGeneratorClick">next执行</dir>
+    <dir @click="onAsyncClick">asyncDelayLog</dir>
   </div>
 </template>
 
 <script>
+import { delayLog, asyncDelayLog } from './generator.js'
 export default {
   name: '',
 
   data() {
     return {
+      gen: {},
       thenable: {
         then: function(resolve, reject) {
           console.log('执行then')
@@ -44,6 +48,14 @@ export default {
   },
 
   methods: {
+    onAsyncClick() {
+      asyncDelayLog()
+    },
+    onGeneratorClick() {
+      setTimeout(() => {
+        this.gen.next()
+      }, 1000)
+    },
     onPromiseRaceClick() {
       let newPromise = Promise.all([this.p1, this.fnc])
       console.log(
@@ -175,6 +187,9 @@ export default {
           console.log(data)
         })
     }
+  },
+  created() {
+    this.gen = delayLog()
   }
 }
 </script>
