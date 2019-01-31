@@ -10,11 +10,12 @@ const classEs6 = () => import('@/page/modules/es6/class')
 const setMap = () => import('@/page/modules/es6/setMap')
 const generator = () => import('@/page/modules/es6/generator')
 const proxy = () => import('@/page/modules/es6/proxy')
-const promise = () => import('@/page/modules/es6/promise')
+const promise = () => import('@/page/modules/es6/promise/index.vue')
 const async = () => import('@/page/modules/es6/async')
 const axios = () => import('@/page/modules/javascript/axios')
 const crossDomain = () => import('@/page/modules/javascript/crossDomain')
 const extend = () => import('@/page/modules/javascript/extend')
+const asyncApi = () => import('@/page/modules/javascript/async')
 const callHook = () => import('@/page/modules/explore/callHook')
 const countUp = () => import('@/page/modules/explore/vux/countUp')
 const scrollBar = () => import('@/page/modules/explore/css/scroll')
@@ -113,6 +114,11 @@ export default {
     path: '/extend',
     name: 'extend',
     component: extend
+  },
+  asyncApi: {
+    path: '/async',
+    name: 'asyncApi',
+    component: asyncApi
   },
   vuxInput: {
     path: '/explore/vuxinput',

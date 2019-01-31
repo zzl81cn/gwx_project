@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div @click="onStartClick">生成一个promise接收一个函数作为入参</div>
-    <div @click="onChangeClick">转为Promise对象</div>
+    <div @click="onStartClick">生成一个promise</div>
+    <div @click="onCreateClick">转为Promise对象</div>
     <div @click="onFnClick">fn</div>
     <div @click="onDishCreateClick(0)">依次生成菜名</div>
     <div @click="onPromiseRaceClick(0)">PromiseRace</div>
@@ -12,8 +12,9 @@
 
 <script>
 import { delayLog, asyncDelayLog } from './generator.js'
+import { getPromise, MyPromise } from './create.js'
 export default {
-  name: '',
+  name: 'promise',
 
   data() {
     return {
@@ -145,28 +146,14 @@ export default {
         console.log(data)
       }, 2000)
     },
-    // 将现有对象转为Promise对象
-    changeToPromise(data) {
-      console.log('传入对象:', data)
-      console.log('转为Promise对象后:', Promise.resolve(data))
-      Promise.resolve(data)
-        .then(res => {
-          console.log('转为Promise的then输出:' + res)
-        })
-        .catch(error => {
-          console.log('错误是:' + error)
-        })
-    },
-    onChangeClick() {
-      // 目标对象为Promise类型
-      // this.changeToPromise(this.step('step对象'))
-      // 目标对象为thenable类型
-      this.changeToPromise(this.thenable)
-      // 目标对象为其他类型
-      // this.changeToPromise(5555)
-    },
-    baomu(data) {
-      return this.step('开始', '做法啦')
+    onCreateClick() {
+      new MyPromise(function(resolve, reject) {
+        setTimeout(() => {
+          resolve('异步后的值')
+        }, 1000)
+      }).then(data => {
+        console.log(data)
+      })
     },
     step(step, data) {
       return new Promise((resolve, reject) => {
@@ -174,18 +161,9 @@ export default {
       })
     },
     onStartClick() {
-      this.baomu()
-        .then(data => {
-          console.log(data)
-          return this.step('第一步', '烧水')
-        })
-        .then(data => {
-          console.log(data)
-          return this.step('第二步', '煮螃蟹')
-        })
-        .then(data => {
-          console.log(data)
-        })
+      getPromise().then(data => {
+        console.log(data)
+      })
     }
   },
   created() {

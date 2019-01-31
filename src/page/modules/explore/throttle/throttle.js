@@ -2,18 +2,23 @@
 *
 * @param func    {Function}   实际要执行的函数
 * @param wait    {Number}     执行间隔，单位是毫秒（ms），默认100ms
-*
 * @return        {Function}   返回一个“节流”函数
 */
 
 export const throttle = function (func, wait = 100) {
   // 利用闭包保存上次执行时间
-  let previous = new Date().getTime()
+  const dateFn = Date.now
+  let previous = dateFn()
   return function() {
       // 保存函数调用时的上下文和参数，传递给 fn
       const context = this;
       const args = arguments;
-      const now = new Date().getTime();
+      const now = dateFn();
+      /**
+       * 当滚动事件触发时函数一直在执行
+       * 当满足设定的延迟时间时，再次触发 scrool 会执行我们传入的函数
+       * 这样起到减少我们目标函数的次数 达到性能优化
+       */
       if (now > (previous + wait)) {
         previous = now;
         Reflect.apply(func, context, args)
@@ -21,7 +26,7 @@ export const throttle = function (func, wait = 100) {
   };
 }
 /**
- * @param     func     {Function}   实际要执行的函数
+ * @param     fn     {Function}   实际要执行的函数
  * @param     delay    {Number}     延迟时间，单位是毫秒（ms）
  * @return    {Function}
  */

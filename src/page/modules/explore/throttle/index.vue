@@ -1,5 +1,11 @@
 <template>
   <div class="flyweight">
+    <div class="scroll-height"
+      ref="height">
+      <div class="scroll-height__child">
+        这里是一段文字
+      </div>
+    </div>
     <input v-model="number"
       type="number"
       @input="onInputChange" />
@@ -27,6 +33,7 @@ export default {
       debounceHandle: debounce(this.debounceLog, 1000),
       // 生成滚动的节流函数
       scrollHandle: throttle(this.judegeBottom, 500),
+      domHandle: throttle(this.domScroll, 200),
       number: 50,
       value: '',
       time: 0
@@ -42,6 +49,9 @@ export default {
     },
     debounceLog() {
       console.log('打印value值 : ' + this.value)
+    },
+    domScroll() {
+      console.log('元素的滚动高度')
     },
     resizeChange() {
       // 记录每次执行函数时间的间隔
@@ -65,6 +75,8 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.scrollHandle)
+    this.$refs.height.addEventListener('scroll', this.domHandle)
+    console.log('scroll-height ------', this.$refs.height.scrollHeight)
   }
 }
 </script>
@@ -75,6 +87,20 @@ export default {
     background-color: #f66;
     width: 100px;
     height: 100px;
+  }
+  .scroll-height {
+    height: 140px;
+    width: 140px;
+    border: 14px solid red;
+    margin: 10px;
+    padding: 10px;
+    overflow-y: scroll;
+    &__child {
+      margin: 10px;
+      padding: 20px;
+      height: 110px;
+      // border: 4px solid #000;
+    }
   }
 }
 </style>
