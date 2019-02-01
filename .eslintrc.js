@@ -34,6 +34,6 @@ module.exports = {
     "indent": [0 , 2],
     "no-useless-constructor":0,
     // "effectively deprecated" methods - which Reflect.* replaces,
-    "prefer-reflect":[2]
+    // "prefer-reflect":[2]
   }
 }

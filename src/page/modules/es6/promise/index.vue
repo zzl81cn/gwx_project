@@ -12,7 +12,8 @@
 
 <script>
 import { delayLog, asyncDelayLog } from './generator.js'
-import { getPromise, MyPromise } from './create.js'
+import { getPromise } from './create.js'
+import { PracticePromise } from './practice'
 export default {
   name: 'promise',
 
@@ -147,11 +148,12 @@ export default {
       }, 2000)
     },
     onCreateClick() {
-      new MyPromise(function(resolve, reject) {
+      let instance = new PracticePromise(function(resolve, reject) {
         setTimeout(() => {
           resolve('异步后的值')
         }, 1000)
-      }).then(data => {
+      })
+      instance.then(data => {
         console.log(data)
       })
     },

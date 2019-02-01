@@ -5,14 +5,14 @@ export function getPromise() {
     }, 1000);
   })
 }
-const PENDING = 'padding'
+const PENDING = 'pending'
 const RESOLVED = 'resolve'
 const REJECTED = 'reject'
 export function MyPromise(fn) {
   const that = this
   that.value = null
-   that.resolvedCallbacks = []
-   that.rejectedCallbacks = []
+  that.resolvedCallbacks = []
+  that.rejectedCallbacks = []
   that.state = PENDING
   try {
     fn(resolve, reject)
@@ -24,7 +24,7 @@ export function MyPromise(fn) {
     if (that.state === PENDING) {
       that.state = RESOLVED
       that.value = value
-      that.resolvedCallbacks.map(cb => cb(that.value))
+      that.resolvedCallbacks.forEach(cb => cb(that.value))
     }
   }
 
@@ -32,10 +32,14 @@ export function MyPromise(fn) {
     if (that.state === PENDING) {
       that.state = REJECTED
       that.value = value
-      that.rejectedCallbacks.map(cb => cb(that.value))
+      that.rejectedCallbacks.forEach(cb => cb(that.value))
     }
   }
 }
+/**
+ * @param {Function} onFulfilled then的第一个回调函数
+ * @param {Function} onRejected then 的第二个回调函数
+ */
 MyPromise.prototype.then = function (onFulfilled, onRejected) {
   const that = this
   onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : v => v
@@ -50,9 +54,11 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
     that.rejectedCallbacks.push(onRejected)
   }
   if (that.state === RESOLVED) {
+    // 接受异步处理结束的值传递给 then的成功回调
     onFulfilled(that.value)
   }
   if (that.state === REJECTED) {
-    // onRejected(that.value)
+      // 接受异步处理结束的值传递给 then的失败回调
+    onRejected(that.value)
   }
 }
