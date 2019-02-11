@@ -1,6 +1,21 @@
 <template>
   <div>
-
+    <div ref="father"
+      class="button__opacity">
+      父级
+      <div ref="child"
+        class="child__1">
+        1
+      </div>
+      <div class="child__2">
+        2
+      </div>
+      <a ref="link"
+        href="http://caibaojian.com/"
+        id="testA">caibaojian.com</a>
+    </div>
+    <div>全部隐藏</div>
+    <div>给子级设置visible</div>
     <div class="wrap">
       <span class="arrow"
         :class="{'arrow__rotate':isShowPopup}"
@@ -58,17 +73,36 @@ export default {
       isShowPopup: false,
       list: [],
       nameList: [[1, 2, 3]],
-      isShow: false
+      isShow: false,
+      isShowButton: false,
+      isShowFather: false
     }
   },
 
   methods: {
+    onFatherClick(event) {
+      console.log('father click', event.target)
+    },
+    onChildClick(e) {
+      e.stopPropagation()
+      console.log('child1 click')
+    },
+    onButtonClick() {
+      this.isShowButton = !this.isShowButton
+    },
     onTextClick() {
       // this.isShowPopup = true
       this.isShow = !this.isShow
     }
   },
-  mounted() {},
+  mounted() {
+    this.$refs.father.addEventListener('click', this.onFatherClick, false)
+    // 设置为false表示在冒泡的时候触发
+    this.$refs.child.addEventListener('click', this.onChildClick, false)
+    this.$refs.link.addEventListener('click', e => {
+      e.preventDefault()
+    })
+  },
   sockets: {
     connect: function() {
       console.log('socket connected')
@@ -80,7 +114,22 @@ export default {
 <style lang='scss' scoped>
 @import '../../../../../styles/font.scss';
 @import '../../../../../theme/index.scss';
+.button__opacity {
+  background-color: #eee;
 
+  .child {
+    &__1 {
+      width: 40px;
+      height: 40px;
+      background-color: #f66;
+    }
+    &__2 {
+      width: 100px;
+      height: 100px;
+      background-color: #cdd;
+    }
+  }
+}
 .example {
   color: red;
   font-size: 28px;

@@ -1,6 +1,7 @@
 ## 浏览器
 * 览器下次重绘前执行回调函数。回调的次数通常是每秒60次 `60 fps转换为每帧16.7ms`
 * requestAnimationFrame没有指定间隔率。那么draw函数调用的频率是多少？这一切都取决于您的浏览器和计算机的帧速率，但通常是60fps。
+* [刷新率](http://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html)
 ## requestAnimationFrame(callback) 
 * requestAnimationFrame() 方法告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。
 * 自带函数节流功能 基本可以保证在 16.6 毫秒内只执行一次
