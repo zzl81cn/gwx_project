@@ -177,6 +177,11 @@ export default {
   },
   created() {
     this.gen = delayLog()
+  },
+  mounted() {
+    window.addEventListener('scroll', () => {
+      console.log(document.documentElement.scrollTop)
+    })
   }
 }
 </script>
@@ -192,7 +197,7 @@ export default {
     display: flex;
     flex-flow: column nowrap;
     flex-shrink: 0;
-    width: 130px;
+    width: 100px;
     align-items: center;
     background-color: #f66;
   }
