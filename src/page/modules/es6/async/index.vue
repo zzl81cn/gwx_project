@@ -1,5 +1,6 @@
 <template>
   <div class="async">
+    <tabbar></tabbar>
     <div @click="onCreateAsyncClick">create generator</div>
     <div>execute</div>
     <input ref=“input”
@@ -7,25 +8,51 @@
       :value="value"
       @click="onTagClick($event.target)">
     <upload></upload>
+    <div ref="copy"
+      @click="onCopyClick">{{text}}</div>
+    <div @click="onCopyInputClick">input 复制</div>
   </div>
 </template>
 
 <script>
 import upload from '@/components/upload/button'
+import tabbar from '@/components/tabbar'
+import { copyText, copyContent } from '@/utils/String.js'
 export default {
   name: 'async',
   components: {
-    upload
+    upload,
+    tabbar
   },
   data() {
     return {
       asyncFn: () => {},
       studentList: [],
-      value: 12
+      value: 12,
+      text: '这是需要复制的文字'
     }
   },
-  mounted() {},
+  mounted() {
+    this.onCopyClick()
+  },
   methods: {
+    onCopyInputClick() {
+      copyContent('i am copy value')
+    },
+    onFontClick() {
+      console.log('big')
+      let select = document.getElementById('change')
+      console.log(select.contentDocument, select.contentWindow)
+
+      // select.execCommand('foreColor', 'false', 'red')
+      // select.execCommand('FontSize', 'false', '50px')
+      // select.execCommand('Bold', 'false', null)
+    },
+    onCopyClick() {
+      copyText(this.$refs.copy, () => {
+        console.log('复制完成')
+      })
+    },
     onTagClick(target) {
       console.log(target)
       target.value = 9999

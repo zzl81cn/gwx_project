@@ -62,3 +62,38 @@ function line(str, lineTextLength = 15, style) {
   }
   return `<p ${style}>${newString}</p>`
 }
+
+/**
+ * 通过DOM直接复制文字
+ * @param {DOM} target 需要复制到目标DOM
+ * @param {Function} callback 可选参数
+ */
+export function copyText (target, callback) {
+  // 设定复制内容到范围
+  const range = document.createRange();
+  range.selectNode(target);
+  // 选中需要复制到内容(相当于手动选中文字)
+  const selection = window.getSelection();
+  if (selection.rangeCount > 0) {
+    selection.removeAllRanges()
+  }
+  selection.addRange(range)
+  // 执行复制
+  document.execCommand('copy');
+  // 删除选中内容
+  selection.removeAllRanges()
+  callback && callback()
+}
+
+/**
+ *
+ * @param {String} value 需要被复制到文本
+ */
+export function copyContent(value) {
+  var temp = document.createElement('input')
+  temp.setAttribute('value', value)
+  document.body.appendChild(temp)
+  temp.select()
+  document.execCommand('copy')
+  document.body.removeChild(temp)
+}
