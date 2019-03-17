@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div class="wrap">
+      <div class="wrap__content">
+        <div class="content__item">这里是第一行</div>
+        <div class="content__item">第二行</div>
+      </div>
+      <div class="content__right">右侧</div>
+    </div>
     <div @click="onStartClick">生成一个promise</div>
     <div @click="onCreateClick">转为Promise对象</div>
     <div @click="onFnClick">fn</div>
@@ -170,9 +177,33 @@ export default {
   },
   created() {
     this.gen = delayLog()
+  },
+  mounted() {
+    window.addEventListener('scroll', () => {
+      console.log(document.documentElement.scrollTop)
+    })
   }
 }
 </script>
 
 <style lang='scss' scoped>
+.wrap {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #ff6;
+  &__content {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-shrink: 0;
+    width: 100px;
+    align-items: center;
+    background-color: #f66;
+  }
+  .content__right {
+    background-color: #ccc;
+    flex-basis: 100%;
+  }
+}
 </style>

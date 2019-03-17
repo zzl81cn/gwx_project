@@ -2,6 +2,9 @@
   <div class="generator">
     <div @click="onCreateGeneratorClick">create generator</div>
     <div @click="onNextStepClick">next step</div>
+    <div class="clamp">
+      大法官首发式地方是地方士大夫阿道夫速度
+    </div>
   </div>
 </template>
 
@@ -36,4 +39,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.clamp {
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 </style>
