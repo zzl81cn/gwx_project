@@ -34,7 +34,6 @@ const webpackConfig = {
     // 出口路径为 D:\work\gwx_project\dist
     path: config.build.assetsRoot,
     filename: '[name].js'
-    // publicPath: utils.assetsSubDirectory()
   },
   // 配置模块的解析方式
   resolve: {
