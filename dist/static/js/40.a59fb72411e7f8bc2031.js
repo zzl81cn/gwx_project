@@ -1,0 +1,2 @@
+webpackJsonp([40],{QQY0:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.animationRequest=function(e,n){var t=Date.now,o=t(),i=void 0;return function r(){i=requestAnimationFrame(r);var u=t();u-o>n&&(console.log(n+"毫秒后执行"),e(i))}},n.ballMove=function(e){var n=document.body.clientHeight-e.clientHeight,t=1,o=0;return function i(){requestAnimationFrame(i),(o<0||o>=n)&&(t*=-1),o+=8*t,console.log(t,8,o),e.style.top=o+"px"}}}});
+//# sourceMappingURL=40.a59fb72411e7f8bc2031.js.map
